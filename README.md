@@ -4,7 +4,7 @@ Search for any city in the world and discover the local temperature of the city.
 
 ## About
 
-I built this app to learn more about the ideia of [styled components](https://github.com/styled-components/styled-components) with React and PWA concepts too.
+I built this app to learn more about the ideia of [styled components](https://github.com/styled-components/styled-components) with React and [PWA](https://developers.google.com/web/progressive-web-apps/) concepts too.
 
 ## The Project
 
