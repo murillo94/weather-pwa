@@ -1,6 +1,6 @@
 # Weather App (PWA)
 
-Search for any city in the world and discover the local temperature of the city. Download the app and use anywhere :D
+Search for any city in the world and discover the local temperature of the city. Download the app directly from a browser and use anywhere :D
 
 ## About
 
