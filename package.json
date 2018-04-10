@@ -8,11 +8,12 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --hot --mode development --open",
-    "prod": "webpack --mode production"
+    "prod": "webpack --mode production --progress --optimize-dedupe --optimize-minimize"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "file-loader": "^1.1.11",

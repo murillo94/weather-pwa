@@ -4,7 +4,7 @@ Search for any city in the world and discover the local temperature of the city.
 
 ## About
 
-I built this app to learn more about the ideia of [styled components](https://github.com/styled-components/styled-components) with React and [PWA](https://developers.google.com/web/progressive-web-apps/) concepts too.
+I built this app to learn more about the idea of [styled components](https://github.com/styled-components/styled-components) with React and [PWA](https://developers.google.com/web/progressive-web-apps/) concepts too.
 
 ## The Project
 
@@ -20,6 +20,7 @@ The main idea of this project is that anyone wants discover the weather around t
 - [ ] Do code splitting
 - [ ] Minify better build prod (styled-components)
 - [ ] Do a button to share the weather with friends by a url
+- [ ] On search do to not re-render the components when enter some letter. ( shouldComponentUpdate )
 
 
 ## url
