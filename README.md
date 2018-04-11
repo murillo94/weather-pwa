@@ -14,13 +14,14 @@ The main idea of this project is that anyone wants discover the weather around t
 
 - [ ] Do a loading when click in the button "My location"
 - [ ] Do the buttons be componets
+- [ ] On search do to not re-render the components when enter some letter. ( shouldComponentUpdate )
 - [ ] Do reload the list in a specific item
 - [ ] Do service-worker work offline
 - [ ] Meta description in index.html (seo)
 - [ ] Do code splitting
 - [ ] Minify better build prod (styled-components)
 - [ ] Do a button to share the weather with friends by a url
-- [ ] On search do to not re-render the components when enter some letter. ( shouldComponentUpdate )
+- [ ] Remove "react-onclickoutside" from ViewCityOptions and do pure function like that.
 
 
 ## url

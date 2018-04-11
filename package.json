@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --hot --mode development --open",
-    "prod": "webpack --mode production --progress --optimize-dedupe --optimize-minimize"
+    "prod": "webpack --mode production --progress"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
