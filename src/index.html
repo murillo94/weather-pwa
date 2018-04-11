@@ -22,9 +22,16 @@
 <body>
   <noscript>If you're seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>, please <strong>enable JS</strong> to make this app work.</noscript>
   <div id="app"></div>
-  <script>
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
+  <script type="application/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+        console.log('Registration: ', registration);
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }).catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    } else {
+      console.log('No service-worker on this browser');
     }
   </script>
 </body>

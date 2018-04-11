@@ -72,7 +72,7 @@ module.exports = {
       directoryIndex: '/',
       verbose: true,
       minify: true,
-      navigateFallback: 'https://murillo94.github.io/weather-pwa',
+      navigateFallback: 'https://murillo94.github.io/weather-pwa/',
       runtimeCaching: [
         {
           urlPattern: /^http:\/\/murillo94.github.io\/weather-pwa/,
