@@ -66,18 +66,25 @@ module.exports = {
     new SWPrecacheWebpackPlugin({
       cacheId: 'weather-app',
       filename: 'service-worker.js',
-      staticFileGlobs: ['*.{js,html,css,jpg,png}'],
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      maximumFileSizeToCacheInBytes: 8388608,
+      staticFileGlobs: ['dist/*.{js,html,css,jpg,png}'],
+      stripPrefix: 'dist/',
+      directoryIndex: '/',
+      verbose: true,
       minify: true,
-      stripPrefix: '.',
+      navigateFallback: 'https://murillo94.github.io/weather-pwa/',
       runtimeCaching: [
         {
           urlPattern: /^http:\/\/murillo94.github.io\/weather-pwa/,
-          handler: 'networkFirst'
+          handler: 'networkFirst',
+          options: {
+            cache: {
+              maxEntries: 10,
+              name: 'weather-data-cache'
+            }
+          }
         }
-      ],
-      dontCacheBustUrlsMatching: /\.\w{8}\./,
-      swFilePath: 'service-worker.js'
+      ]
     }),
   ]
 }
