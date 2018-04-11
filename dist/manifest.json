@@ -5,7 +5,7 @@
   "background_color": "#76afeb",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "/",
+  "start_url": "https://murillo94.github.io/weather-pwa/",
   "icons": [
     {
       "src": "icon-72x72.png",

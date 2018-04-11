@@ -75,7 +75,7 @@ module.exports = {
       navigateFallback: 'https://murillo94.github.io/weather-pwa/',
       runtimeCaching: [
         {
-          urlPattern: /^http:\/\/murillo94.github.io\/weather-pwa/,
+          urlPattern: /^https:\/\/murillo94.github.io\/weather-pwa/,
           handler: 'networkFirst',
           options: {
             cache: {
