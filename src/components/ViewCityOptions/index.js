@@ -75,16 +75,16 @@ class ViewCityOptions extends Component {
 	render() {
 		return (
 			<Wrapper>
-		      	<Button onClick={this.actionSearch} data-tip="Search">
+		      	<Button onClick={this.actionSearch} aria-label="Search" data-tip="Search">
 					<Search color="#ffffff" size={21}/>
 		      	</Button>
 		      	<InputSearch id="input" type="search" value={this.state.search} placeholder="Search a City" 
-		      	width={this.state.width} padding={this.state.padding} onKeyPress={this.handleEnter} 
-		      	onChange={this.updateSearch}/>
-				<Button onClick={this.actionRefresh} data-tip="Refresh">
+		      	aria-label="Search input" width={this.state.width} padding={this.state.padding} 
+		      	onKeyPress={this.handleEnter} onChange={this.updateSearch}/>
+				<Button onClick={this.actionRefresh} aria-label="Refresh" data-tip="Refresh">
 					<RefreshCw color="#ffffff" size={21}/>
 				</Button>
-				<Button onClick={this.actionGeoLocation} data-tip="My location">
+				<Button onClick={this.actionGeoLocation} aria-label="My location" data-tip="My location">
 					<Navigation color="#ffffff" size={21}/>
 				</Button>
 				<ReactTooltip effect="solid" globalEventOff='click'/>
