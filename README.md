@@ -4,7 +4,7 @@ Find out the current weather forecast in any city around the world. Download the
 
 ## About
 
-I built this app to learn more about the idea of [styled components](https://github.com/styled-components/styled-components) with React and [PWA](https://developers.google.com/web/progressive-web-apps/) concepts too.
+I built this app to learn more about the idea of [styled components](https://github.com/styled-components/styled-components) with React, [PWA](https://developers.google.com/web/progressive-web-apps/) concepts and [PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) pattern too.
 
 ## The Project
 
