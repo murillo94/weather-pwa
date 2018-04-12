@@ -23,6 +23,9 @@ The main idea of this project is that anyone wants discover the weather around t
 - [ ] Do a button to share the weather with friends by a url
 - [ ] Remove "react-onclickoutside" from ViewCityOptions and do pure function like that.
 
+## Lighthouse Report
+
+<img alt="Lighthouse Report" src="lighthouse-report.png" height="170" />
 
 ## url
 
