@@ -27,6 +27,8 @@ The main idea of this project is that anyone wants discover the weather around t
 
 <img alt="Lighthouse Report" src="lighthouse-report.png" height="130" />
 
+Last report update: 12/4/2018
+
 ## url
 
 https://murillo94.github.io/weather-pwa/
