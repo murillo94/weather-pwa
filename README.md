@@ -25,8 +25,9 @@ The main idea of this project is that anyone wants discover the weather around t
 
 ## Lighthouse Report
 
-<img alt="Lighthouse Report" src="lighthouse-report.png" height="130" />
+<img alt="Lighthouse Report" src="lighthouse-report.png" height="185" width="100%" />
 
+You can check [here]
 Last report update: 4/12/2018
 
 ## url
