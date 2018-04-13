@@ -5,6 +5,7 @@ import InputSearch from './InputSearch';
 import ButtonOptions from '../ButtonOptions/index';
 
 import { Search, RefreshCw, Navigation } from 'react-feather';
+import {isMobile} from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
 import onClickOutside from "react-onclickoutside";
 
@@ -87,7 +88,9 @@ class ViewCityOptions extends Component {
 				<ButtonOptions action={this.actionRefresh} text="Refresh" margin="5px" icon={<RefreshCw color="#ffffff" size={21} />} />
 				<ButtonOptions action={this.actionGeoLocation} text="My location" margin="0px" loading={this.state.loading} 
 				icon={<Navigation color="#ffffff" size={21} />} />
-				<ReactTooltip effect="solid" globalEventOff='click'/>
+				{!isMobile &&
+					<ReactTooltip effect="solid" globalEventOff='click'/>
+				}
 			</Wrapper>
 		)
 	}

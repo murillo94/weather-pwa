@@ -5,8 +5,9 @@ import SectionTemperatureInfos from './SectionTemperatureInfos';
 import TemperatureImageInfos from './TemperatureImageInfos';
 import TemperatureTextInfos from './TemperatureTextInfos';
 
-import ReactTooltip from 'react-tooltip';
 import { Search, RefreshCw, Sun, TrendingDown, TrendingUp, Thermometer, Wind } from 'react-feather';
+import {isMobile} from 'react-device-detect';
+import ReactTooltip from 'react-tooltip';	
 
 const TemperatureInfos = (props) => (
 	<SectionTemperatureInfos>
@@ -34,7 +35,9 @@ const TemperatureInfos = (props) => (
 			</TemperatureImageInfos>
 			{props.wind}km/h
 		</TemperatureTextInfos>
-		<ReactTooltip effect="solid" globalEventOff='click'/>
+		{!isMobile &&
+			<ReactTooltip effect="solid" globalEventOff='click'/>
+		}
 	</SectionTemperatureInfos>
 )
 
