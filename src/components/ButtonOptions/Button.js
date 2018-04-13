@@ -5,7 +5,7 @@ const Button = styled.button`
 	border: none;
 	box-shadow: none;
 	outline: 0;
-	margin-right: 5px;
+	margin-right: ${props => props.margin};
 	padding: 3px 9px;
 	transition: .2s ease-in all;
 	&:hover{
@@ -13,9 +13,10 @@ const Button = styled.button`
 		box-shadow: rgba(5, 15, 44, 0.1) 0px 7px 20px -4px;
     	border-radius: 99px;
 	}
-	&:nth-child(4){
-		margin-right: 0;
-	}
 `;
+
+Button.defaultProps = {
+  	margin: '5px', 
+};
 
 export default Button;

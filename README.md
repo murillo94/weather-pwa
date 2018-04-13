@@ -14,8 +14,8 @@ The main idea of this project is that anyone wants discover the weather around t
 
 - [x] Minify better build prod (styled-components)
 - [x] Meta description in index.html (seo)
-- [ ] Do a loading when click in the button "My location"
-- [ ] Do the buttons be componets
+- [x] Do a loading when click in the button "My location"
+- [x] Do the buttons be componets
 - [ ] On search do to not re-render the components when enter some letter. ( shouldComponentUpdate )
 - [ ] Do reload the list in a specific item
 - [ ] Do service-worker work offline
