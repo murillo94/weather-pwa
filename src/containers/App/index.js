@@ -1,10 +1,11 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import Container from '../../components/Container/index';
 import ViewCity from '../../components/ViewCity/index';
 import ListCities from '../../components/ListCities/index';
-import styled, { injectGlobal } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
 	body{
 		margin: 0;
 		font-family: 'Roboto', sans-serif;
@@ -25,15 +26,14 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
-export default function App() {
+const App = () => (
+  <AppWrapper>
+    <GlobalStyle />
+    <Container>
+      <ViewCity />
+      <ListCities />
+    </Container>
+  </AppWrapper>
+);
 
-  	return (
-  		<AppWrapper>
-  			<Container>
-  				<ViewCity/>
-     			<ListCities/>
-     		</Container>
-    	</AppWrapper>
-  	)
-
-}
+export default hot(module)(App);

@@ -9,12 +9,12 @@ const Container = styled.div`
   flex-direction: row;
   width: 70vw;
   height: 75vh;
-  box-shadow: 0 2px 30px rgba(102, 102, 102,.09);
-  transition: width .1s, height .1s ease;
+  box-shadow: 0 2px 30px rgba(102, 102, 102, 0.09);
+  transition: width 0.1s, height 0.1s ease;
   @media (max-width: 991px) {
     flex-direction: column;
     width: 80vw;
-  	height: 85vh;
+    height: 85vh;
   }
   @media (max-width: 560px) {
     width: 100vw;

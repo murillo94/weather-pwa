@@ -8,34 +8,29 @@ import TemperatureDayText from './TemperatureDayText';
 import TemperatureDayImage from './TemperatureDayImage';
 import TemperatureDayNumber from './TemperatureDayNumber';
 
-import ReactTooltip from 'react-tooltip';
-import { Search, Sun } from 'react-feather';
+import { Sun } from 'react-feather';
 
-const ViewCityChooseList = (props) => (
-	<Wrapper>
-		<Ul>
-			{props.list.map((item, i) => (
-		  		<Li key={i}>
-					<TemperatureDayText fontWeight="500">
-						{item.main.dt_txt}
-					</TemperatureDayText>
-					<TemperatureDayImage>
-						<Sun color="#ffffff" size={30}/>
-					</TemperatureDayImage>
-					<TemperatureDayNumber color="#333">
-						30
-					</TemperatureDayNumber>
-					<TemperatureDayNumber color="#7c7c7c">
-						30
-					</TemperatureDayNumber>
-				</Li>
-			))}
-		</Ul>
-	</Wrapper>
-)
+const ViewCityChooseList = props => (
+  <Wrapper>
+    <Ul>
+      {props.list.map((item, i) => (
+        <Li key={i}>
+          <TemperatureDayText fontWeight="500">
+            {item.main.dt_txt}
+          </TemperatureDayText>
+          <TemperatureDayImage>
+            <Sun color="#ffffff" size={30} />
+          </TemperatureDayImage>
+          <TemperatureDayNumber color="#333">30</TemperatureDayNumber>
+          <TemperatureDayNumber color="#7c7c7c">30</TemperatureDayNumber>
+        </Li>
+      ))}
+    </Ul>
+  </Wrapper>
+);
 
 ViewCityChooseList.propTypes = {
-  list: PropTypes.array,
+  list: PropTypes.array
 };
 
 export default ViewCityChooseList;

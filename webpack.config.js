@@ -1,54 +1,64 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'docs'),
+    filename: 'main.js'
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
-        type: 'javascript/auto',
-        test: /\.(jpg|png|gif|json)$/,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              progressive: true,
-              optimizationLevel: 7,
-              interlaced: false,
-              pngquant: {
-                quality: '65-90',
-                speed: 4,
-              },
-            },
-          },
-        ],
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'image-webpack-loader',
+        enforce: 'pre'
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: { minimize: true }
           }
         ]
       },
       {
         test: /\.json$/,
-        use: 'json-loader',
-      },
+        exclude: /node_modules/,
+        loader: 'json-loader'
+      }
+    ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 6,
+          compress: true,
+          output: {
+            comments: false,
+            beautify: false
+          }
+        }
+      })
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
+      template: './src/index.html',
+      filename: './index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -59,16 +69,59 @@ module.exports = {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
+        minifyURLs: true
       },
-      inject: true,
+      inject: true
+    }),
+    new WebpackPwaManifest({
+      name: 'WeatherApp',
+      short_name: 'WeatherApp',
+      description:
+        'Find out the current weather forecast in any city around the world.',
+      theme_color: '#ffffff',
+      background_color: '#76afeb',
+      crossorigin: 'use-credentials',
+      icons: [
+        {
+          src: path.resolve('src/images/icon-72x72.png'),
+          size: '72x72'
+        },
+        {
+          src: path.resolve('src/images/icon-96x96.png'),
+          size: '96x96'
+        },
+        {
+          src: path.resolve('src/images/icon-128x128.png'),
+          size: '128x128'
+        },
+        {
+          src: path.resolve('src/images/icon-144x144.png'),
+          size: '144x144'
+        },
+        {
+          src: path.resolve('src/images/icon-152x152.png'),
+          size: '152x152'
+        },
+        {
+          src: path.resolve('src/images/icon-192x192.png'),
+          size: '192x192'
+        },
+        {
+          src: path.resolve('src/images/icon-384x384.png'),
+          size: '384x384'
+        },
+        {
+          src: path.resolve('src/images/icon-512x512.png'),
+          size: '512x512'
+        }
+      ]
     }),
     new SWPrecacheWebpackPlugin({
       cacheId: 'weather-app',
       filename: 'service-worker.js',
       maximumFileSizeToCacheInBytes: 8388608,
-      staticFileGlobs: ['dist/*.{js,html,css,jpg,png}'],
-      stripPrefix: 'dist/',
+      staticFileGlobs: ['docs/*.{js,html,css,jpg,png}'],
+      stripPrefix: 'docs/',
       directoryIndex: '/',
       verbose: true,
       minify: true,
@@ -85,6 +138,6 @@ module.exports = {
           }
         }
       ]
-    }),
+    })
   ]
-}
+};

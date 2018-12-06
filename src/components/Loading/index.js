@@ -4,10 +4,10 @@ import Wrapper from './Wrapper';
 import Span from './Span';
 
 const Loading = () => (
-	<Wrapper>
-		<Span/>
-		<Span/>
-	</Wrapper>
-)
+  <Wrapper>
+    <Span />
+    <Span />
+  </Wrapper>
+);
 
 export default Loading;

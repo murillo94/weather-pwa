@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": { "browsers": ["last 2 chrome versions"] },
+        "useBuiltIns": "usage"
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-react-constant-elements",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    "transform-react-remove-prop-types",
+    "react-hot-loader/babel"
+  ]
+}
