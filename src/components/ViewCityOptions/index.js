@@ -17,9 +17,9 @@ class ViewCityOptions extends Component {
     loading: false
   };
 
-  handleEnter = e => {
-    if (e.key === 'Enter' && this.state.search !== '') {
-      this.props.onUpdateSearch(this.state.search);
+  handleEnter = (e, search) => {
+    if (e.key === 'Enter' && search !== '') {
+      this.props.onUpdateSearch(search);
       this.setState({ width: 0, padding: 0, search: '' });
       document.getElementById('input').blur();
     }
@@ -34,22 +34,16 @@ class ViewCityOptions extends Component {
     }
   };
 
-  handleClickOutside = e => {
-    this.setState({ width: 0, padding: 0 });
-    document.getElementById('input').blur();
-  };
-
-  actionSearch = () => {
-    if (this.state.width === 0) {
+  actionSearch = (width, search) => {
+    if (width === 0) {
       document.getElementById('input').focus();
       this.setState({ width: 100, padding: 7 });
     } else {
-      if (this.state.search === '') {
-        // todo - tirar qnd ficar 0 o length, deixar aberto e fechar apenas qnd toca fora.
+      if (search === '') {
         this.setState({ width: 0, padding: 0 });
         document.getElementById('input').blur();
       } else {
-        this.props.onUpdateSearch(this.state.search);
+        this.props.onUpdateSearch(search);
         this.setState({ width: 0, padding: 0, search: '' });
         document.getElementById('input').blur();
       }
@@ -89,10 +83,12 @@ class ViewCityOptions extends Component {
   };
 
   render() {
+    const { search, width, padding, loading } = this.state;
+
     return (
       <Wrapper>
         <ButtonOptions
-          action={this.actionSearch}
+          action={() => this.actionSearch(width, search)}
           text="Search"
           margin="5px"
           icon={<Search color="#ffffff" size={21} />}
@@ -100,12 +96,12 @@ class ViewCityOptions extends Component {
         <InputSearch
           id="input"
           type="search"
-          value={this.state.search}
+          value={search}
           placeholder="Search a City"
           aria-label="Search input"
-          width={this.state.width}
-          padding={this.state.padding}
-          onKeyPress={this.handleEnter}
+          width={width}
+          padding={padding}
+          onKeyPress={e => this.handleEnter(e, search)}
           onChange={this.updateSearch}
         />
         <ButtonOptions
@@ -118,7 +114,7 @@ class ViewCityOptions extends Component {
           action={this.actionGeoLocation}
           text="My location"
           margin="0px"
-          loading={this.state.loading}
+          loading={loading}
           icon={<Navigation color="#ffffff" size={21} />}
         />
         {!isMobile && <ReactTooltip effect="solid" globalEventOff="click" />}

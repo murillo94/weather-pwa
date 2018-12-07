@@ -61,52 +61,31 @@ export default class ListCitiesItem extends Component {
           isLoading: false
         });
       } else {
-        this.setState(prevState => ({
+        this.setState({
           err: data.message,
           isLoading: false
-        }));
+        });
       }
     } catch (err) {
-      this.setState(prevState => ({
+      this.setState({
         err: 'Something went wrong, please try again later.',
         isLoading: false
-      }));
+      });
     }
   }
 
-  getImageTemperature = () => {
-    if (this.state.icon === '11d' || this.state.icon === '11n') {
-      return <CloudLightning color="#c1c1c1" size={30} />;
-    }
+  getImageTemperature = icon => {
+    icon = icon.replace(/\D/g, '');
 
-    if (this.state.icon === '09d' || this.state.icon === '09n') {
-      return <CloudDrizzle color="#c1c1c1" size={30} />;
-    }
+    const options = {
+      '11': <CloudLightning color="#c1c1c1" size={30} />,
+      '09': <CloudDrizzle color="#c1c1c1" size={30} />,
+      '10': <CloudRain color="#c1c1c1" size={30} />,
+      '13': <CloudSnow color="#c1c1c1" size={30} />,
+      '01': <Sun color="#c1c1c1" size={30} />
+    };
 
-    if (this.state.icon === '10d' || this.state.icon === '10n') {
-      return <CloudRain color="#c1c1c1" size={30} />;
-    }
-
-    if (this.state.icon === '13d' || this.state.icon === '13n') {
-      return <CloudSnow color="#c1c1c1" size={30} />;
-    }
-
-    if (this.state.icon === '01d' || this.state.icon === '01n') {
-      return <Sun color="#c1c1c1" size={30} />;
-    }
-
-    if (
-      this.state.icon === '50d' ||
-      this.state.icon === '50n' ||
-      this.state.icon === '02d' ||
-      this.state.icon === '02n' ||
-      this.state.icon === '03d' ||
-      this.state.icon === '03n' ||
-      this.state.icon === '04d' ||
-      this.state.icon === '04n'
-    ) {
-      return <Cloud color="#c1c1c1" size={30} />;
-    }
+    return options[icon] || <Cloud color="#c1c1c1" size={30} />;
   };
 
   componentDidMount() {
@@ -114,11 +93,24 @@ export default class ListCitiesItem extends Component {
   }
 
   render() {
-    if (this.state.err) {
+    const {
+      err,
+      isLoading,
+      name,
+      country,
+      temp,
+      icon,
+      temp_min,
+      temp_max,
+      humidity,
+      wind
+    } = this.state;
+
+    if (err) {
       return (
         <Wrapper>
           <Error
-            message={this.state.err}
+            message={err}
             textBtn="Reload"
             type="list"
             back={this.actionBack}
@@ -126,30 +118,34 @@ export default class ListCitiesItem extends Component {
         </Wrapper>
       );
     }
-    if (this.state.isLoading) {
+
+    if (isLoading) {
       return (
         <Wrapper>
           <Loading />
         </Wrapper>
       );
     }
+
     return (
       <Wrapper>
         <ContainerLocation>
-          <CityText>{this.state.name}</CityText>
-          <CountryText>{this.state.country}</CountryText>
+          <CityText>{name}</CityText>
+          <CountryText>{country}</CountryText>
         </ContainerLocation>
         <ContainerTemperature>
           <SectionTemperature>
-            <TemperatureText color="">{this.state.temp} °C</TemperatureText>
-            <TemperatureImage>{this.getImageTemperature()}</TemperatureImage>
+            <TemperatureText color="">{temp} °C</TemperatureText>
+            <TemperatureImage>
+              {this.getImageTemperature(icon)}
+            </TemperatureImage>
           </SectionTemperature>
           <SectionTemperatureMobile>
             <TemperatureInfos
-              tempMin={this.state.temp_min}
-              tempMax={this.state.temp_max}
-              humidity={this.state.humidity}
-              wind={this.state.wind}
+              tempMin={temp_min}
+              tempMax={temp_max}
+              humidity={humidity}
+              wind={wind}
               sizeIcon={15}
               sizeText={13}
               colorIcon="#c1c1c1"

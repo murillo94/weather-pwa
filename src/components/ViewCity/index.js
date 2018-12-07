@@ -39,12 +39,12 @@ export default class ViewCity extends Component {
 
   onGeoLocation = (lat, lng, err) => {
     this.setState(
-      prevState => ({
+      {
         latitude: lat,
         longitude: lng,
         err: err,
         isLoading: true
-      }),
+      },
       () => {
         if (!err) {
           this.getData();
@@ -54,40 +54,34 @@ export default class ViewCity extends Component {
   };
 
   async getData() {
+    const { search, latitude, longitude } = this.state;
+
     const url =
-      this.state.latitude === ''
-        ? `?q=${this.state.search}`
-        : `?lat=${this.state.latitude}&lon=${this.state.longitude}`;
+      latitude === '' ? `?q=${search}` : `?lat=${latitude}&lon=${longitude}`;
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather${url}&appid=${key}&units=metric&lang=en`
       );
       const data = await res.json();
       if (data.cod === 200) {
-        await this.getColorTemperature(
-          data.weather[0].icon,
-          (backgroundColor, backgroundImage) => {
-            this.setState({
-              description: data.weather[0].description,
-              condition: data.weather[0].condition,
-              icon: data.weather[0].icon,
-              name: data.name,
-              search: data.name,
-              country: data.sys.country,
-              temp: parseInt(data.main.temp),
-              temp_min: data.main.temp_min,
-              temp_max: data.main.temp_max,
-              humidity: data.main.humidity,
-              wind: parseFloat(data.wind.speed.toFixed(1)),
-              color_bg: backgroundColor,
-              color_bi: backgroundImage,
-              isLoading: false,
-              err: null,
-              latitude: '',
-              longitude: ''
-            });
-          }
-        );
+        this.setState({
+          description: data.weather[0].description,
+          condition: data.weather[0].condition,
+          icon: data.weather[0].icon,
+          name: data.name,
+          search: data.name,
+          country: data.sys.country,
+          temp: parseInt(data.main.temp),
+          temp_min: data.main.temp_min,
+          temp_max: data.main.temp_max,
+          humidity: data.main.humidity,
+          wind: parseFloat(data.wind.speed.toFixed(1)),
+          background: this.getColorTemperature(data.weather[0].icon),
+          isLoading: false,
+          err: null,
+          latitude: '',
+          longitude: ''
+        });
       } else {
         this.setState(prevState => ({
           err: data.message,
@@ -104,39 +98,18 @@ export default class ViewCity extends Component {
     }
   }
 
-  getColorTemperature = (icon, fn) => {
-    if (icon === '11d' || icon === '11n') {
-      fn('#738294', '#889eb3');
-    }
+  getColorTemperature = icon => {
+    icon = icon.replace(/\D/g, '');
 
-    if (icon === '09d' || icon === '09n') {
-      fn('#879aaf', '#99b5d0');
-    }
+    const options = {
+      '11': { color: '#738294', image: '#889eb3' },
+      '09': { color: '#879aaf', image: '#99b5d0' },
+      '10': { color: '#698eb3', image: '#9dbbdc' },
+      '13': { color: '#b0cbed', image: '#def1ff' },
+      '01': { color: '#ffde65', image: '#f9e362' }
+    };
 
-    if (icon === '10d' || icon === '10n') {
-      fn('#698eb3', '#9dbbdc');
-    }
-
-    if (icon === '13d' || icon === '13n') {
-      fn('#b0cbed', '#def1ff');
-    }
-
-    if (icon === '01d' || icon === '01n') {
-      fn('#ffde65', '#f9e362');
-    }
-
-    if (
-      icon === '50d' ||
-      icon === '50n' ||
-      icon === '02d' ||
-      icon === '02n' ||
-      icon === '03d' ||
-      icon === '03n' ||
-      icon === '04d' ||
-      icon === '04n'
-    ) {
-      fn('#b9d6f5', '#a7d5fb');
-    }
+    return options[icon] || { color: '#b9d6f5', image: '#a7d5fb' };
   };
 
   componentDidMount() {
@@ -151,11 +124,24 @@ export default class ViewCity extends Component {
   };
 
   render() {
-    if (this.state.err) {
+    const {
+      err,
+      isLoading,
+      background,
+      description,
+      temp,
+      name,
+      temp_min,
+      temp_max,
+      humidity,
+      wind
+    } = this.state;
+
+    if (err) {
       return (
         <Wrapper>
           <Error
-            message={this.state.err}
+            message={err}
             textBtn="Back"
             type="view"
             back={this.actionBack}
@@ -163,17 +149,19 @@ export default class ViewCity extends Component {
         </Wrapper>
       );
     }
-    if (this.state.isLoading) {
+
+    if (isLoading) {
       return (
         <Wrapper>
           <Loading />
         </Wrapper>
       );
     }
+
     return (
       <Wrapper
-        backgroundColor={this.state.color_bg}
-        backgroundImage={this.state.color_bi}
+        backgroundColor={background.color}
+        backgroundImage={background.image}
       >
         <ViewCityOptions
           onUpdateSearch={this.onUpdateSearch}
@@ -181,13 +169,13 @@ export default class ViewCity extends Component {
           onGeoLocation={this.onGeoLocation}
         />
         <ViewCityChoose
-          description={this.state.description}
-          temp={this.state.temp}
-          name={this.state.name}
-          tempMin={this.state.temp_min}
-          tempMax={this.state.temp_max}
-          humidity={this.state.humidity}
-          wind={this.state.wind}
+          description={description}
+          temp={temp}
+          name={name}
+          tempMin={temp_min}
+          tempMax={temp_max}
+          humidity={humidity}
+          wind={wind}
         />
       </Wrapper>
     );
