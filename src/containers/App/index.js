@@ -26,12 +26,22 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
+const cities = [
+  { name: 'São Paulo' },
+  { name: 'London' },
+  { name: 'New York' },
+  { name: 'Paris' },
+  { name: 'Hong Kong' },
+  { name: 'Madrid' },
+  { name: 'Buenos Aires' }
+];
+
 const App = () => (
   <AppWrapper>
     <GlobalStyle />
     <Container>
       <ViewCity />
-      <ListCities />
+      <ListCities {...{ cities }} />
     </Container>
   </AppWrapper>
 );

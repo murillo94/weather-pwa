@@ -7,16 +7,24 @@ import TemperatureText from './TemperatureText';
 import CityText from './CityText';
 import TemperatureInfos from '../TemperatureInfos/index';
 
-const ViewCityChoose = props => (
+const ViewCityChoose = ({
+  description,
+  name,
+  temp,
+  tempMin,
+  tempMax,
+  humidity,
+  wind
+}) => (
   <Wrapper>
-    <DescriptionText>{props.description}</DescriptionText>
-    <CityText>{props.name}</CityText>
-    <TemperatureText>{props.temp} °C</TemperatureText>
+    <DescriptionText>{description}</DescriptionText>
+    <CityText>{name}</CityText>
+    <TemperatureText>{temp} °C</TemperatureText>
     <TemperatureInfos
-      tempMin={props.tempMin}
-      tempMax={props.tempMax}
-      humidity={props.humidity}
-      wind={props.wind}
+      tempMin={tempMin}
+      tempMax={tempMax}
+      humidity={humidity}
+      wind={wind}
       sizeIcon={18}
       sizeText={15}
       colorIcon="#c9c9c9"

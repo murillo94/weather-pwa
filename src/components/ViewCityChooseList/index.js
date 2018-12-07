@@ -10,10 +10,10 @@ import TemperatureDayNumber from './TemperatureDayNumber';
 
 import { Sun } from 'react-feather';
 
-const ViewCityChooseList = props => (
+const ViewCityChooseList = ({ list }) => (
   <Wrapper>
     <Ul>
-      {props.list.map((item, i) => (
+      {list.map((item, i) => (
         <Li key={i}>
           <TemperatureDayText fontWeight="500">
             {item.main.dt_txt}

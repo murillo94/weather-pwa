@@ -9,48 +9,57 @@ import { TrendingDown, TrendingUp, Thermometer, Wind } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
 
-const TemperatureInfos = props => (
+const TemperatureInfos = ({
+  sizeText,
+  colorText,
+  colorIcon,
+  sizeIcon,
+  tempMin,
+  tempMax,
+  humidity,
+  wind
+}) => (
   <SectionTemperatureInfos>
     <TemperatureTextInfos
-      sizeText={props.sizeText}
-      colorText={props.colorText}
+      sizeText={sizeText}
+      colorText={colorText}
       data-tip="Minimum temperature"
     >
       <TemperatureImageInfos>
-        <TrendingDown color={props.colorIcon} size={props.sizeIcon} />
+        <TrendingDown color={colorIcon} size={sizeIcon} />
       </TemperatureImageInfos>
-      {props.tempMin} °C
+      {tempMin} °C
     </TemperatureTextInfos>
     <TemperatureTextInfos
-      sizeText={props.sizeText}
-      colorText={props.colorText}
+      sizeText={sizeText}
+      colorText={colorText}
       data-tip="Maximum temperature"
     >
       <TemperatureImageInfos>
-        <TrendingUp color={props.colorIcon} size={props.sizeIcon} />
+        <TrendingUp color={colorIcon} size={sizeIcon} />
       </TemperatureImageInfos>
-      {props.tempMax} °C
+      {tempMax} °C
     </TemperatureTextInfos>
     <TemperatureTextInfos
-      sizeText={props.sizeText}
-      colorText={props.colorText}
+      sizeText={sizeText}
+      colorText={colorText}
       data-tip="Humidity"
     >
       <TemperatureImageInfos margin={5}>
-        <Thermometer color={props.colorIcon} size={props.sizeIcon} />
+        <Thermometer color={colorIcon} size={sizeIcon} />
       </TemperatureImageInfos>
-      {props.humidity}%
+      {humidity}%
     </TemperatureTextInfos>
     <TemperatureTextInfos
-      sizeText={props.sizeText}
-      colorText={props.colorText}
+      sizeText={sizeText}
+      colorText={colorText}
       data-tip="Wind"
       margin={0}
     >
       <TemperatureImageInfos margin={8}>
-        <Wind color={props.colorIcon} size={props.sizeIcon} />
+        <Wind color={colorIcon} size={sizeIcon} />
       </TemperatureImageInfos>
-      {props.wind}km/h
+      {wind}km/h
     </TemperatureTextInfos>
     {!isMobile && <ReactTooltip effect="solid" globalEventOff="click" />}
   </SectionTemperatureInfos>
