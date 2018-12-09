@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { setConfig, cold } from 'react-hot-loader';
 
 import Wrapper from './Wrapper';
 
@@ -7,98 +8,83 @@ import ViewCityChoose from '../ViewCityChoose/index';
 import Loading from '../Loading/index';
 import Error from '../Error/index';
 
-const key = 'b5e7ada3bd028f6482908a861c2306d1';
+setConfig({
+  onComponentRegister: type =>
+    (String(type).indexOf('useState') > 0 ||
+      String(type).indexOf('useEffect') > 0) &&
+    cold(type)
+});
 
-export default class ViewCity extends Component {
-  state = {
-    search: 'Joinville',
-    latitude: '',
-    longitude: '',
-    err: null,
-    isLoading: true
-  };
+function ViewCity({ token }) {
+  const [search, setSearch] = useState('Joinville');
+  const [searchBkp, setSearchBkp] = useState('Joinville');
+  const [refresh, setRefresh] = useState(false);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
 
-  onUpdateSearch = search => {
-    this.setState(
-      prevState => ({
-        search: search,
-        search_bkp: prevState.search,
-        isLoading: true
-      }),
-      () => {
-        this.getData();
-      }
-    );
-  };
-
-  onRefresh = () => {
-    this.setState({ isLoading: true }, () => {
-      this.getData();
-    });
-  };
-
-  onGeoLocation = (lat, lng, err) => {
-    this.setState(
-      {
-        latitude: lat,
-        longitude: lng,
-        err: err,
-        isLoading: true
-      },
-      () => {
-        if (!err) {
-          this.getData();
+  useEffect(
+    () => {
+      (async () => {
+        setLoading(true);
+        const url =
+          typeof search === 'string'
+            ? `?q=${search}`
+            : `?lat=${search.latitude}&lon=${search.longitude}`;
+        try {
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather${url}&appid=${token}&units=metric&lang=en`
+          );
+          if (response.status === 200) {
+            const data = await response.json();
+            setData({
+              description: data.weather[0].description,
+              condition: data.weather[0].condition,
+              icon: data.weather[0].icon,
+              name: data.name,
+              country: data.sys.country,
+              temp: parseInt(data.main.temp),
+              temp_min: data.main.temp_min,
+              temp_max: data.main.temp_max,
+              humidity: data.main.humidity,
+              wind: parseFloat(data.wind.speed.toFixed(1)),
+              background: getColorTemperature(data.weather[0].icon)
+            });
+            setSearchBkp(search);
+          } else {
+            setError(new Error(response.message));
+          }
+        } catch (e) {
+          setError('Something went wrong, please try again later.');
         }
-      }
-    );
+        setLoading(false);
+      })();
+    },
+    [search, refresh]
+  );
+
+  const onUpdateSearch = search => {
+    setSearch(search);
   };
 
-  async getData() {
-    const { search, latitude, longitude } = this.state;
+  const onRefresh = () => {
+    setSearch(searchBkp);
+    setRefresh(!refresh);
+  };
 
-    const url =
-      latitude === '' ? `?q=${search}` : `?lat=${latitude}&lon=${longitude}`;
-    try {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather${url}&appid=${key}&units=metric&lang=en`
-      );
-      const data = await res.json();
-      if (data.cod === 200) {
-        this.setState({
-          description: data.weather[0].description,
-          condition: data.weather[0].condition,
-          icon: data.weather[0].icon,
-          name: data.name,
-          search: data.name,
-          country: data.sys.country,
-          temp: parseInt(data.main.temp),
-          temp_min: data.main.temp_min,
-          temp_max: data.main.temp_max,
-          humidity: data.main.humidity,
-          wind: parseFloat(data.wind.speed.toFixed(1)),
-          background: this.getColorTemperature(data.weather[0].icon),
-          isLoading: false,
-          err: null,
-          latitude: '',
-          longitude: ''
-        });
-      } else {
-        this.setState(prevState => ({
-          err: data.message,
-          isLoading: false,
-          search: prevState.search_bkp
-        }));
-      }
-    } catch (err) {
-      this.setState(prevState => ({
-        err: 'Something went wrong, please try again later.',
-        isLoading: false,
-        search: prevState.search_bkp
-      }));
+  const onGeoLocation = ({ latitude = '', longitude = '', error = null }) => {
+    if (error) {
+      setError(error);
+    } else {
+      setSearch({ latitude, longitude });
     }
-  }
+  };
 
-  getColorTemperature = icon => {
+  const actionBack = () => {
+    setError(null);
+  };
+
+  const getColorTemperature = icon => {
     icon = icon.replace(/\D/g, '');
 
     const options = {
@@ -112,72 +98,43 @@ export default class ViewCity extends Component {
     return options[icon] || { color: '#b9d6f5', image: '#a7d5fb' };
   };
 
-  componentDidMount() {
-    this.getData();
-  }
-
-  actionBack = () => {
-    this.setState({
-      err: null,
-      isLoading: false
-    });
-  };
-
-  render() {
-    const {
-      err,
-      isLoading,
-      background,
-      description,
-      temp,
-      name,
-      temp_min,
-      temp_max,
-      humidity,
-      wind
-    } = this.state;
-
-    if (err) {
-      return (
-        <Wrapper>
-          <Error
-            message={err}
-            textBtn="Back"
-            type="view"
-            back={this.actionBack}
-          />
-        </Wrapper>
-      );
-    }
-
-    if (isLoading) {
-      return (
-        <Wrapper>
-          <Loading />
-        </Wrapper>
-      );
-    }
-
+  if (error) {
     return (
-      <Wrapper
-        backgroundColor={background.color}
-        backgroundImage={background.image}
-      >
-        <ViewCityOptions
-          onUpdateSearch={this.onUpdateSearch}
-          onRefresh={this.onRefresh}
-          onGeoLocation={this.onGeoLocation}
-        />
-        <ViewCityChoose
-          description={description}
-          temp={temp}
-          name={name}
-          tempMin={temp_min}
-          tempMax={temp_max}
-          humidity={humidity}
-          wind={wind}
-        />
+      <Wrapper>
+        <Error message={error} textBtn="Back" type="view" back={actionBack} />
       </Wrapper>
     );
   }
+
+  if (loading) {
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
+  }
+
+  return (
+    <Wrapper
+      backgroundColor={data.background.color}
+      backgroundImage={data.background.image}
+    >
+      <ViewCityOptions
+        onUpdateSearch={onUpdateSearch}
+        onRefresh={onRefresh}
+        onGeoLocation={onGeoLocation}
+      />
+      <ViewCityChoose
+        description={data.description}
+        temp={data.temp}
+        name={data.name}
+        tempMin={data.temp_min}
+        tempMax={data.temp_max}
+        humidity={data.humidity}
+        wind={data.wind}
+      />
+    </Wrapper>
+  );
 }
+
+export default ViewCity;

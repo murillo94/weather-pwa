@@ -5,12 +5,12 @@ import Ul from './Ul';
 import Li from './Li';
 import ListCitiesItem from '../ListCitiesItem/index';
 
-const ListCities = ({ cities }) => (
+const ListCities = ({ cities, token }) => (
   <Wrapper>
     <Ul>
       {cities.map((item, i) => (
         <Li key={i}>
-          <ListCitiesItem nameCity={item.name} />
+          <ListCitiesItem token={token} name={item.name} />
         </Li>
       ))}
     </Ul>

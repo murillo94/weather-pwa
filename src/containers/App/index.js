@@ -26,6 +26,8 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
+const token = 'b5e7ada3bd028f6482908a861c2306d1';
+
 const cities = [
   { name: 'São Paulo' },
   { name: 'London' },
@@ -40,8 +42,8 @@ const App = () => (
   <AppWrapper>
     <GlobalStyle />
     <Container>
-      <ViewCity />
-      <ListCities {...{ cities }} />
+      <ViewCity {...{ token }} />
+      <ListCities {...{ cities, token }} />
     </Container>
   </AppWrapper>
 );

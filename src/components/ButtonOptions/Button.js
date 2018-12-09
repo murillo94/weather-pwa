@@ -10,7 +10,7 @@ const Button = styled.button`
   transition: 0.2s ease-in all;
   &:hover {
     cursor: pointer;
-    box-shadow: rgba(5, 15, 44, 0.1) 0px 7px 20px -4px;
+    box-shadow: rgba(5, 15, 44, 0.1) 0 7px 20px -4px;
     border-radius: 99px;
   }
 `;

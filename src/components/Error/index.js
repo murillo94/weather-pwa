@@ -15,7 +15,7 @@ const Error = ({ message, textBtn, type, back }) => {
         }
       : {
           fontSize: '20px',
-          margin: '0px 0 10px',
+          margin: '0 0 10px',
           paddingBtn: '5px 30px'
         };
   return (
