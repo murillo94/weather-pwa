@@ -12,17 +12,9 @@ The main idea of this project is that anyone wants discover the weather around t
 
 ## To-Do
 
-- [x] Minify better build prod (styled-components)
-- [x] Meta description in index.html (seo)
-- [x] Do a loading when click in the button "My location"
-- [x] Do the buttons be componets
-- [x] Remove tooltip on mobile
 - [ ] On search do to not re-render the components when enter some letter. ( shouldComponentUpdate )
-- [ ] Do reload the list in a specific item
 - [ ] Do service-worker work offline
-- [ ] Do code splitting
 - [ ] Do a button to share the weather with friends by a url
-- [ ] Remove "react-onclickoutside" from ViewCityOptions and do pure function like that
 
 ## Lighthouse Report
 
