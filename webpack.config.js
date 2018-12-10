@@ -30,38 +30,52 @@ let plugins = [
     theme_color: '#ffffff',
     background_color: '#76afeb',
     crossorigin: 'use-credentials',
+    fingerprints: false,
+    inject: true,
+    ios: {
+      'apple-mobile-web-app-title': 'WeatherApp',
+      'apple-mobile-web-app-status-bar-style': 'white'
+    },
     icons: [
       {
         src: path.resolve('src/images/icon-72x72.png'),
-        size: '72x72'
+        size: '72x72',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-96x96.png'),
-        size: '96x96'
+        size: '96x96',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-128x128.png'),
-        size: '128x128'
+        size: '128x128',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-144x144.png'),
-        size: '144x144'
+        size: '144x144',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-152x152.png'),
-        size: '152x152'
+        size: '152x152',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-192x192.png'),
-        size: '192x192'
+        size: '192x192',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-384x384.png'),
-        size: '384x384'
+        size: '384x384',
+        ios: true
       },
       {
         src: path.resolve('src/images/icon-512x512.png'),
-        size: '512x512'
+        size: '512x512',
+        ios: 'startup'
       }
     ]
   })
