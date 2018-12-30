@@ -9,7 +9,7 @@ Find out the current weather forecast in any city around the world. Download the
 I built this app to learn more about the idea of [styled components](https://github.com/styled-components/styled-components) with React, [PWA](https://developers.google.com/web/progressive-web-apps/) concepts and [PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) pattern too.
 The main idea of this project is that anyone wants discover the weather around the world or local can search and find easily, with a nice UI and great usability.
 
-## To-Do
+## TODO
 
 - Do service-worker work offline
 - Do a button to share the weather with friends by a url
