@@ -27,7 +27,7 @@ const ViewCityChoose = ({
       wind={wind}
       sizeIcon={18}
       sizeText={15}
-      colorIcon="#c9c9c9"
+      colorIcon="#c3c3c3"
       colorText="#fff"
     />
   </Wrapper>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const TemperatureDayText = styled.div`
   font-size: 15px;
-  font-weight: ${props => props.fontWeight};
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,9 +11,5 @@ const TemperatureDayText = styled.div`
     margin-bottom: 0;
   }
 `;
-
-TemperatureDayText.defaultProps = {
-  fontWeight: 'normal'
-};
 
 export default TemperatureDayText;

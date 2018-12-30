@@ -6,7 +6,7 @@ const CityText = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   @media (max-width: 560px) {
     max-width: 35vw;
   }

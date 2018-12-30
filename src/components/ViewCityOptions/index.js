@@ -100,7 +100,13 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
         loading={loading}
         icon={<Navigation color="#ffffff" size={21} />}
       />
-      {!isMobile && <ReactTooltip effect="solid" globalEventOff="click" />}
+      {!isMobile && (
+        <ReactTooltip
+          className="tooltipCustom"
+          effect="solid"
+          globalEventOff="click"
+        />
+      )}
     </Wrapper>
   );
 }

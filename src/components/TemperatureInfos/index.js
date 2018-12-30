@@ -61,7 +61,13 @@ const TemperatureInfos = ({
       </TemperatureImageInfos>
       {wind}km/h
     </TemperatureTextInfos>
-    {!isMobile && <ReactTooltip effect="solid" globalEventOff="click" />}
+    {!isMobile && (
+      <ReactTooltip
+        className="tooltipCustom"
+        effect="solid"
+        globalEventOff="click"
+      />
+    )}
   </SectionTemperatureInfos>
 );
 
