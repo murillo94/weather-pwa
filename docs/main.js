@@ -263,7 +263,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  -webkit-overflow-scrolling: smooth;
+  -webkit-overflow-scrolling: touch;
 `,i=a;var l,s;t.a=i,l=r(2).default,s=r(2).leaveModule,l&&(l.register(a,"Ul","/Users/srikarsundaram/Desktop/weather-pwa/src/components/ListCities/Ul.js"),l.register(i,"default","/Users/srikarsundaram/Desktop/weather-pwa/src/components/ListCities/Ul.js"),s(e))}).call(this,r(4)(e))},function(e,t,r){"use strict";(function(e){var n,o=r(3);(n=r(2).enterModule)&&n(e);const a=o.b.li`
   width: auto;
   padding: 0 1em;
