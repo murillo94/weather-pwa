@@ -11,8 +11,9 @@ The main idea of this project is that anyone wants discover the weather around t
 
 ## TODO
 
-- Do service-worker work offline
+- Do a button to show infos about the project (bottom right in the main city info)
 - Do a button to share the weather with friends by a url
+- Do service-worker work offline
 
 ## url
 
