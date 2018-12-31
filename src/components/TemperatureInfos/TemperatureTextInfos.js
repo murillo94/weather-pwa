@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const TemperatureTextInfos = styled.div`
-  font-size: ${props => props.sizeText}px;
-  color: ${props => props.colorText};
+  font-size: ${({ sizeText }) => sizeText};
+  color: ${({ colorText }) => colorText};
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: ${props => props.margin}px;
+  margin-right: ${({ margin }) => margin};
   @media (max-width: 560px) {
     text-align: center;
     width: 50%;
@@ -22,9 +22,9 @@ const TemperatureTextInfos = styled.div`
 `;
 
 TemperatureTextInfos.defaultProps = {
-  sizeText: 13,
+  sizeText: '13px',
   colorText: '#7c7c7c',
-  margin: 13
+  margin: '13px'
 };
 
 export default TemperatureTextInfos;

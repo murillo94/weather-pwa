@@ -45,7 +45,7 @@ const TemperatureInfos = ({
       colorText={colorText}
       data-tip="Humidity"
     >
-      <TemperatureImageInfos margin={5}>
+      <TemperatureImageInfos margin={'5px'}>
         <Thermometer color={colorIcon} size={sizeIcon} />
       </TemperatureImageInfos>
       {humidity}%
@@ -56,7 +56,7 @@ const TemperatureInfos = ({
       data-tip="Wind"
       margin={0}
     >
-      <TemperatureImageInfos margin={8}>
+      <TemperatureImageInfos margin={'8px'}>
         <Wind color={colorIcon} size={sizeIcon} />
       </TemperatureImageInfos>
       {wind}km/h
@@ -77,7 +77,7 @@ TemperatureInfos.propTypes = {
   humidity: PropTypes.number,
   wind: PropTypes.number,
   sizeIcon: PropTypes.number,
-  sizeText: PropTypes.number,
+  sizeText: PropTypes.string,
   colorIcon: PropTypes.string,
   colorText: PropTypes.string
 };

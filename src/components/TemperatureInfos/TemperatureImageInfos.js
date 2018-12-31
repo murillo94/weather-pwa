@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const TemperatureImageInfos = styled.div`
-  margin-right: ${props => props.margin}px;
+  margin-right: ${({ margin }) => margin};
   @media (max-width: 560px) {
     display: inline;
   }
 `;
 
 TemperatureImageInfos.defaultProps = {
-  margin: 10
+  margin: '10px'
 };
 
 export default TemperatureImageInfos;

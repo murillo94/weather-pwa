@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-const InputSearch = styled.input`
+const InputSearch = styled.input.attrs(props => {
+  type: props.type;
+  autoComplete: props.autoComplete;
+})`
   display: inline-block;
   vertical-align: middle;
   width: 0;

@@ -127,8 +127,8 @@ function ListCitiesItem({ token, name }) {
             tempMax={data.temp_max}
             humidity={data.humidity}
             wind={data.wind}
-            sizeIcon={15}
-            sizeText={13}
+            sizeIcon={'15px'}
+            sizeText={'13px'}
             colorIcon="#c1c1c1"
             colorText="#7c7c7c"
           />

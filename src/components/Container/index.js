@@ -11,12 +11,8 @@ const Container = styled.div`
   height: 75vh;
   box-shadow: 0 2px 30px rgba(102, 102, 102, 0.09);
   transition: width 0.1s, height 0.1s ease;
-  @media (max-width: 991px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
-    width: 80vw;
-    height: 85vh;
-  }
-  @media (max-width: 560px) {
     width: 100vw;
     height: 100vh;
     border: none;

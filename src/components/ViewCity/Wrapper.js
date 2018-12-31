@@ -5,11 +5,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 0;
   margin: 0;
-  background-color: ${props => props.backgroundColor};
+  background-color: ${({ backgroundColor }) => backgroundColor};
   background-image: linear-gradient(
     135deg,
-    ${props => props.backgroundColor} 25%,
-    ${props => props.backgroundImage} 100%
+    ${({ backgroundColor }) => backgroundColor} 25%,
+    ${({ backgroundImage }) => backgroundImage} 100%
   );
   flex: 0.4;
   overflow-y: auto;

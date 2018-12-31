@@ -42,13 +42,18 @@ const AppWrapper = styled.div`
 const token = 'b5e7ada3bd028f6482908a861c2306d1';
 
 const cities = [
-  { name: 'São Paulo' },
+  { name: 'Paris' },
+  { name: 'Berlin' },
+  { name: 'Los Angeles' },
   { name: 'London' },
   { name: 'New York' },
-  { name: 'Paris' },
-  { name: 'Hong Kong' },
   { name: 'Madrid' },
-  { name: 'Buenos Aires' }
+  { name: 'São Paulo' },
+  { name: 'Tokyo' },
+  { name: 'Hong Kong' },
+  { name: 'Buenos Aires' },
+  { name: 'Moscow' },
+  { name: 'Dubai' }
 ];
 
 const App = () => (

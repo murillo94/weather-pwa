@@ -85,6 +85,7 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
         placeholder="Search a City"
         aria-label="Search input"
         onKeyPress={handleEnter}
+        autoComplete="off"
         {...search}
       />
       <ButtonOptions

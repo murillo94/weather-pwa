@@ -5,14 +5,17 @@ const Button = styled.button`
   border: none;
   box-shadow: none;
   outline: 0;
-  margin-right: ${props => props.margin};
+  margin-right: ${({ margin }) => margin};
   padding: 3px 9px;
   transition: 0.2s ease-in all;
+  border-radius: 99px;
+  cursor: pointer;
+  ${({ isMobile }) =>
+    !isMobile &&
+    `
   &:hover {
-    cursor: pointer;
     box-shadow: rgba(5, 15, 44, 0.1) 0 7px 20px -4px;
-    border-radius: 99px;
-  }
+  }`}
 `;
 
 Button.defaultProps = {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const CityText = styled.div`
-  max-width: 15vw;
+  max-width: 20vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -5,6 +5,8 @@ import Wrapper from './Wrapper';
 import Button from './Button';
 import Loading from './Loading';
 
+import { isMobile } from 'react-device-detect';
+
 const ButtonOptions = ({ action, text, margin, loading, icon }) => {
   if (loading && text === 'My location') {
     return (
@@ -20,6 +22,7 @@ const ButtonOptions = ({ action, text, margin, loading, icon }) => {
         aria-label={text}
         data-tip={text}
         margin={margin}
+        isMobile={isMobile}
       >
         {icon}
       </Button>
