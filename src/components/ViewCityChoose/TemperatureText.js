@@ -4,7 +4,6 @@ const TemperatureText = styled.div`
   color: #fff;
   font-size: 55px;
   font-weight: bold;
-  background-color: transparent;
   margin-bottom: 10px;
 `;
 

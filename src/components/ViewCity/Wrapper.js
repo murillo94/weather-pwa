@@ -3,8 +3,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0;
-  margin: 0;
   background-color: ${({ backgroundColor }) => backgroundColor};
   background-image: linear-gradient(
     135deg,
@@ -12,11 +10,11 @@ const Wrapper = styled.div`
     ${({ backgroundImage }) => backgroundImage} 100%
   );
   flex: 0.4;
-  overflow-y: auto;
   padding: 20px 0;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
   border-right: 1px solid #eee;
+  overflow-y: auto;
   @media (max-width: 991px) {
     flex: 0.6;
     border-top-left-radius: 7px;

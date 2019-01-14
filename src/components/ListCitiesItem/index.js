@@ -40,7 +40,6 @@ function ListCitiesItem({ token, name }) {
   useEffect(
     () => {
       (async () => {
-        setLoading(true);
         try {
           const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${token}&units=metric&lang=en`
@@ -50,7 +49,7 @@ function ListCitiesItem({ token, name }) {
             setData({
               description: data.weather[0].description,
               condition: data.weather[0].condition,
-              icon: data.weather[0].icon,
+              icon: getImageTemperature(data.weather[0].icon),
               name: data.name,
               country: data.sys.country,
               temp: parseInt(data.main.temp),
@@ -119,7 +118,7 @@ function ListCitiesItem({ token, name }) {
       <ContainerTemperature>
         <SectionTemperature>
           <TemperatureText>{data.temp} °C</TemperatureText>
-          <TemperatureImage>{getImageTemperature(data.icon)}</TemperatureImage>
+          <TemperatureImage>{data.icon}</TemperatureImage>
         </SectionTemperature>
         <SectionTemperatureMobile>
           <TemperatureInfos
