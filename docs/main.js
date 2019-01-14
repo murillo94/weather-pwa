@@ -97,7 +97,6 @@
 		margin: 0;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     color: #474747;
-    -webkit-overflow-scrolling: touch;
   }
 
   input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
@@ -260,6 +259,7 @@
   border-bottom-right-radius: 7px;
   flex: 0.6;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   @media (max-width: 991px) {
     flex: 0.4;
   }
