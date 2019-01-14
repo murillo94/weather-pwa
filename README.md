@@ -9,7 +9,9 @@ Find out the current weather forecast in any city around the world. Download the
 I built this app to learn more about the idea of [styled components](https://github.com/styled-components/styled-components) with React, [PWA](https://developers.google.com/web/progressive-web-apps/) concepts and [PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) pattern too.
 The main idea of this project is that anyone wants discover the weather around the world or local can search and find easily, with a nice UI and great usability.
 
-<img alt="Weather App (PWA)" src="./resources/demo.png" height="900" width="500" />
+<p align="center">
+  <img alt="Weather App (PWA)" src="./resources/demo.png" width="600" />
+</p>
 
 ## TODO
 
