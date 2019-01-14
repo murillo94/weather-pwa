@@ -5,7 +5,7 @@ const Button = styled.button`
   border: none;
   box-shadow: none;
   outline: 0;
-  margin-right: ${({ margin }) => margin};
+  margin-right: ${({ marginRight }) => marginRight}px;
   padding: 3px 9px;
   transition: 0.2s ease-in all;
   border-radius: 99px;
@@ -19,7 +19,7 @@ const Button = styled.button`
 `;
 
 Button.defaultProps = {
-  margin: '5px'
+  marginRight: 5
 };
 
 export default Button;

@@ -25,8 +25,8 @@ const ViewCityChoose = ({
       tempMax={tempMax}
       humidity={humidity}
       wind={wind}
-      sizeIcon={'18px'}
-      sizeText={'15px'}
+      sizeIcon={18}
+      sizeText={15}
       colorIcon="#c3c3c3"
       colorText="#fff"
     />

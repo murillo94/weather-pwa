@@ -9,19 +9,24 @@ const Error = ({ message, textBtn, type, back }) => {
   let typeError =
     type === 'view'
       ? {
-          fontSize: '23px',
-          margin: '0 0 25px',
-          paddingBtn: '10px 30px'
+          fontSize: 23,
+          marginBottom: 25,
+          padding: '10px 30px'
         }
       : {
-          fontSize: '20px',
-          margin: '0 0 10px',
-          paddingBtn: '5px 30px'
+          fontSize: 20,
+          marginBottom: 10,
+          padding: '5px 30px'
         };
   return (
     <Wrapper>
-      <DescriptionText type={typeError}>{message}</DescriptionText>
-      <Button type={typeError} onClick={back}>
+      <DescriptionText
+        marginBottom={typeError.marginBottom}
+        fontSize={typeError.fontSize}
+      >
+        {message}
+      </DescriptionText>
+      <Button padding={typeError.padding} onClick={back}>
         {textBtn}
       </Button>
     </Wrapper>

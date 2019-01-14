@@ -71,6 +71,7 @@ function ListCitiesItem({ token, name }) {
   );
 
   const actionRefresh = () => {
+    setLoading(true);
     setRefresh(!refresh);
   };
 
@@ -126,8 +127,8 @@ function ListCitiesItem({ token, name }) {
             tempMax={data.temp_max}
             humidity={data.humidity}
             wind={data.wind}
-            sizeIcon={'15px'}
-            sizeText={'13px'}
+            sizeIcon={15}
+            sizeText={13}
             colorIcon="#c1c1c1"
             colorText="#7c7c7c"
           />

@@ -7,7 +7,7 @@ import Loading from './Loading';
 
 import { isMobile } from 'react-device-detect';
 
-const ButtonOptions = ({ action, text, margin, loading, icon }) => {
+const ButtonOptions = ({ action, text, marginRight, loading, icon }) => {
   if (loading && text === 'My location') {
     return (
       <Wrapper>
@@ -21,7 +21,7 @@ const ButtonOptions = ({ action, text, margin, loading, icon }) => {
         onClick={action}
         aria-label={text}
         data-tip={text}
-        margin={margin}
+        marginRight={marginRight}
         isMobile={isMobile}
       >
         {icon}
@@ -33,7 +33,7 @@ const ButtonOptions = ({ action, text, margin, loading, icon }) => {
 ButtonOptions.propTypes = {
   action: PropTypes.func,
   text: PropTypes.string,
-  margin: PropTypes.string,
+  marginRight: PropTypes.number,
   loading: PropTypes.bool,
   icon: PropTypes.element
 };

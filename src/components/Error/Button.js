@@ -4,7 +4,7 @@ const Button = styled.button`
   color: #fff;
   font-size: 15px;
   border-radius: 99px;
-  padding: ${props => props.type.paddingBtn};
+  padding: ${({ padding }) => padding};
   background-color: #cacacd;
   border: none;
   cursor: pointer;
@@ -17,7 +17,7 @@ const Button = styled.button`
 `;
 
 Button.defaultProps = {
-  paddingBtn: '10px 30px'
+  padding: '10px 30px'
 };
 
 export default Button;

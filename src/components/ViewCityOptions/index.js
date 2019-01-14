@@ -75,7 +75,6 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
       <ButtonOptions
         action={actionSearch}
         text="Search"
-        margin="5px"
         icon={<Search color="#ffffff" size={21} />}
       />
       <InputSearch
@@ -91,13 +90,12 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
       <ButtonOptions
         action={actionRefresh}
         text="Refresh"
-        margin="5px"
         icon={<RefreshCw color="#ffffff" size={21} />}
       />
       <ButtonOptions
         action={actionGeoLocation}
         text="My location"
-        margin="0"
+        marginRight={0}
         loading={loading}
         icon={<Navigation color="#ffffff" size={21} />}
       />

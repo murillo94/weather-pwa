@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const DescriptionText = styled.p`
-  font-size: ${props => props.type.fontSize};
+  font-size: ${({ fontSize }) => fontSize}px;
   font-weight: bold;
-  margin: ${props => props.type.margin};
+  margin: 0 0 ${({ marginBottom }) => marginBottom}px;
   text-align: center;
   padding: 0 40px;
   &:first-letter {
@@ -12,8 +12,8 @@ const DescriptionText = styled.p`
 `;
 
 DescriptionText.defaultProps = {
-  fontSize: '23px',
-  margin: '0 0 25px'
+  fontSize: 23,
+  marginBottom: 25
 };
 
 export default DescriptionText;

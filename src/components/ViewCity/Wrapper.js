@@ -29,8 +29,7 @@ const Wrapper = styled.div`
 
 Wrapper.defaultProps = {
   backgroundColor: '#fff',
-  backgroundImage: '#fff',
-  margin: 13
+  backgroundImage: '#fff'
 };
 
 export default Wrapper;
