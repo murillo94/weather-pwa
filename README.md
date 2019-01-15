@@ -13,18 +13,18 @@ The project main idea is that anyone wants discover the weather around the world
   <img alt="Weather App (PWA)" src="./resources/demo.png" width="600" />
 </p>
 
-# APIs
+## APIs
 
 - https://openweathermap.org/api
 
-# Features
+## Features
 
 - PWA
 - Responsive
 - Offline ready (in progress)
 - Installable (add to Homescreen)
 
-# Built with
+## Built with
 
 - ES6
 - React
