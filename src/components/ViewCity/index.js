@@ -41,7 +41,7 @@ function ViewCity({ token }) {
               description: data.weather[0].description,
               condition: data.weather[0].condition,
               icon: data.weather[0].icon,
-              name: data.name,
+              name: `${data.name} - ${data.sys.country}`,
               country: data.sys.country,
               temp: parseInt(data.main.temp),
               temp_min: data.main.temp_min,
