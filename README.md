@@ -26,15 +26,9 @@ The project main idea is that anyone wants discover the weather around the world
 
 ## Built with
 
-- ES6
-- React
-- Styled Components (styled-components)
-
-## TODO
-
-- Button to show infos about the project (bottom right in the main city info)
-- Button to share the weather with friends by a url
-- Service-worker to work offline
+- [React](https://github.com/facebook/react)
+- [styled-components](https://github.com/styled-components)
+- [webpack](https://github.com/webpack/webpack)
 
 ## url
 
