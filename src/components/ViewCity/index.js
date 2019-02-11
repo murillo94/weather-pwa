@@ -31,7 +31,7 @@ function ViewCity() {
       const url =
         typeof search === 'string'
           ? { q: `${search}` }
-          : { lat: `${search.latitude}`, long: `${search.longitude}` };
+          : { lat: `${search.latitude}`, lon: `${search.longitude}` };
 
       try {
         const response = await request('weather', {
