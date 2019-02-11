@@ -30,6 +30,23 @@ The project main idea is that anyone wants discover the weather around the world
 - [styled-components](https://github.com/styled-components)
 - [webpack](https://github.com/webpack/webpack)
 
+## Running it locally
+
+#### Requirements
+
+- [Node.js](https://nodejs.org/) (latest)
+- [Yarn](https://yarnpkg.com/)
+
+#### How to run
+
+- `git clone git@github.com:murillo94/weather-pwa.git`
+- `yarn install`
+- `yarn dev`
+
+To open the project in production mode, use:
+
+- `yarn prod`
+
 ## url
 
 https://murillo94.github.io/weather-pwa/
