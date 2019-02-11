@@ -35,9 +35,9 @@
     "react": "react@next",
     "react-device-detect": "^1.6.1",
     "react-dom": "react-dom@next",
-    "react-feather": "^1.1.4",
+    "react-feather": "^1.1.6",
     "react-hot-loader": "react-hot-loader@next",
-    "react-tooltip": "^3.9.0",
+    "react-tooltip": "^3.9.2",
     "styled-components": "^4.1.2"
   }
 }
