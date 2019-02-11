@@ -15,6 +15,8 @@ import TemperatureInfos from '../TemperatureInfos/index';
 import Loading from '../Loading/index';
 import Error from '../Error/index';
 
+import request from '../../services/Api';
+
 import {
   CloudLightning,
   CloudDrizzle,
@@ -31,44 +33,43 @@ setConfig({
     cold(type)
 });
 
-function ListCitiesItem({ token, name }) {
+function ListCitiesItem({ name }) {
   const [refresh, setRefresh] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
-  useEffect(
-    () => {
-      (async () => {
-        try {
-          const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${token}&units=metric&lang=en`
-          );
-          if (response.status === 200) {
-            const data = await response.json();
-            setData({
-              description: data.weather[0].description,
-              condition: data.weather[0].condition,
-              icon: getImageTemperature(data.weather[0].icon),
-              name: data.name,
-              country: data.sys.country,
-              temp: parseInt(data.main.temp),
-              temp_min: data.main.temp_min,
-              temp_max: data.main.temp_max,
-              humidity: data.main.humidity,
-              wind: parseFloat(data.wind.speed.toFixed(1))
-            });
-          } else {
-            setError(new Error(response.message));
-          }
-        } catch (e) {
-          setError('Something went wrong, please try again later.');
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await request('weather', {
+          q: name
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+
+          setData({
+            description: data.weather[0].description,
+            condition: data.weather[0].condition,
+            icon: getImageTemperature(data.weather[0].icon),
+            name: data.name,
+            country: data.sys.country,
+            temp: parseInt(data.main.temp),
+            temp_min: parseInt(data.main.temp_min),
+            temp_max: parseInt(data.main.temp_max),
+            humidity: parseInt(data.main.humidity),
+            wind: data.wind.speed.toFixed(1)
+          });
+        } else {
+          setError(response.statusText);
         }
-        setLoading(false);
-      })();
-    },
-    [refresh]
-  );
+      } catch (e) {
+        setError('Something went wrong, please try again later.');
+      }
+      setLoading(false);
+    })();
+  }, [refresh]);
 
   const actionRefresh = () => {
     setLoading(true);
@@ -139,8 +140,7 @@ function ListCitiesItem({ token, name }) {
 }
 
 ListCitiesItem.propTypes = {
-  name: PropTypes.string,
-  token: PropTypes.string
+  name: PropTypes.string
 };
 
 export default ListCitiesItem;

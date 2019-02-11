@@ -8,6 +8,8 @@ import ViewCityChoose from '../ViewCityChoose/index';
 import Loading from '../Loading/index';
 import Error from '../Error/index';
 
+import request from '../../services/Api';
+
 setConfig({
   onComponentRegister: type =>
     (String(type).indexOf('useState') > 0 ||
@@ -15,7 +17,7 @@ setConfig({
     cold(type)
 });
 
-function ViewCity({ token }) {
+function ViewCity() {
   const [search, setSearch] = useState('Joinville');
   const [searchBkp, setSearchBkp] = useState('Joinville');
   const [refresh, setRefresh] = useState(false);
@@ -23,45 +25,45 @@ function ViewCity({ token }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
-  useEffect(
-    () => {
-      (async () => {
-        setLoading(true);
-        const url =
-          typeof search === 'string'
-            ? `?q=${search}`
-            : `?lat=${search.latitude}&lon=${search.longitude}`;
-        try {
-          const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather${url}&appid=${token}&units=metric&lang=en`
-          );
-          if (response.status === 200) {
-            const data = await response.json();
-            setData({
-              description: data.weather[0].description,
-              condition: data.weather[0].condition,
-              icon: data.weather[0].icon,
-              name: `${data.name} - ${data.sys.country}`,
-              country: data.sys.country,
-              temp: parseInt(data.main.temp),
-              temp_min: data.main.temp_min,
-              temp_max: data.main.temp_max,
-              humidity: data.main.humidity,
-              wind: parseFloat(data.wind.speed.toFixed(1)),
-              background: getColorTemperature(data.weather[0].icon)
-            });
-            setSearchBkp(search);
-          } else {
-            setError(new Error(response.message));
-          }
-        } catch (e) {
-          setError('Something went wrong, please try again later.');
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const url =
+        typeof search === 'string'
+          ? { q: `${search}` }
+          : { lat: `${search.latitude}`, long: `${search.longitude}` };
+
+      try {
+        const response = await request('weather', {
+          ...{ ...url }
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+
+          setData({
+            description: data.weather[0].description,
+            condition: data.weather[0].condition,
+            icon: data.weather[0].icon,
+            name: `${data.name} - ${data.sys.country}`,
+            country: data.sys.country,
+            temp: parseInt(data.main.temp),
+            temp_min: parseInt(data.main.temp_min),
+            temp_max: parseInt(data.main.temp_max),
+            humidity: parseInt(data.main.humidity),
+            wind: data.wind.speed.toFixed(1),
+            background: getColorTemperature(data.weather[0].icon)
+          });
+          setSearchBkp(search);
+        } else {
+          setError(response.statusText);
         }
-        setLoading(false);
-      })();
-    },
-    [search, refresh]
-  );
+      } catch (e) {
+        setError('Something went wrong, please try again later.');
+      }
+      setLoading(false);
+    })();
+  }, [search, refresh]);
 
   const onUpdateSearch = search => {
     setSearch(search);
