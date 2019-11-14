@@ -1,6 +1,6 @@
 const api = 'https://api.openweathermap.org/data/2.5';
 
-// The api key is ok to be exposed, it's free and only for self study. I know that the corretly way is to store in a .env file.
+// The api key is ok to be exposed, it's free and only for self study.
 const key = 'b5e7ada3bd028f6482908a861c2306d1';
 
 const defaultContent = {
