@@ -21,7 +21,6 @@
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
     "sw-precache-webpack-plugin": "^0.11.5",
-    "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
@@ -38,7 +37,7 @@
     "styled-components": "^4.1.2"
   },
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --hot --open",
-    "prod": "webpack --mode=production --progress"
+    "dev": "webpack-dev-server --hot --open --mode development",
+    "prod": "webpack -p --mode production"
   }
 }
