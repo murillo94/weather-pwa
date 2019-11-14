@@ -1,9 +1,10 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import styled, { createGlobalStyle } from 'styled-components';
+
 import Container from '../../components/Container/index';
 import ViewCity from '../../components/ViewCity/index';
 import ListCities from '../../components/ListCities/index';
-import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -39,27 +40,12 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
-const cities = [
-  { name: 'Paris' },
-  { name: 'Berlin' },
-  { name: 'Los Angeles' },
-  { name: 'London' },
-  { name: 'New York' },
-  { name: 'Madrid' },
-  { name: 'São Paulo' },
-  { name: 'Tokyo' },
-  { name: 'Hong Kong' },
-  { name: 'Buenos Aires' },
-  { name: 'Moscow' },
-  { name: 'Dubai' }
-];
-
 const App = () => (
   <AppWrapper>
     <GlobalStyle />
     <Container>
       <ViewCity />
-      <ListCities {...{ cities }} />
+      <ListCities />
     </Container>
   </AppWrapper>
 );
