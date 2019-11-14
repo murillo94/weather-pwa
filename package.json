@@ -28,6 +28,7 @@
     "webpack-pwa-manifest": "^4.1.1"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-device-detect": "^1.9.10",
     "react-dom": "^16.11.0",
