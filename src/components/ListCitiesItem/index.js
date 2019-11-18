@@ -26,7 +26,7 @@ import {
   SectionTemperatureMobile,
   TemperatureText,
   TemperatureImage
-} from './style';
+} from './styles';
 
 setConfig({
   onComponentRegister: type =>

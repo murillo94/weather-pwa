@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 
 import ButtonOptions from '../ButtonOptions';
 
-import { Wrapper, InputSearch } from './style';
+import { Wrapper, InputSearch } from './styles';
 
 setConfig({
   onComponentRegister: type =>

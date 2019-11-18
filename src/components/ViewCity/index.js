@@ -8,7 +8,7 @@ import ViewCityChoose from '../ViewCityChoose';
 import Loading from '../Loading';
 import Error from '../Error';
 
-import { Wrapper } from './style';
+import { Wrapper } from './styles';
 
 setConfig({
   onComponentRegister: type =>

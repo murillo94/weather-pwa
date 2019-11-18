@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 
-import { Wrapper, Loading, Button } from './style';
+import { Wrapper, Loading, Button } from './styles';
 
 const ButtonOptions = ({ action, text, marginRight, loading, icon }) => {
   if (loading && text === 'My location') {

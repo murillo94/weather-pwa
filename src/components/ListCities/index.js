@@ -2,7 +2,7 @@ import React from 'react';
 
 import ListCitiesItem from '../ListCitiesItem';
 
-import { Wrapper } from './style';
+import { Wrapper } from './styles';
 
 const cities = [
   { name: 'Paris' },

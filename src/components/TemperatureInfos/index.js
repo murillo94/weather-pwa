@@ -8,7 +8,7 @@ import {
   SectionTemperatureInfos,
   TemperatureTextInfos,
   TemperatureImageInfos
-} from './style';
+} from './styles';
 
 const TemperatureInfos = ({
   sizeText,

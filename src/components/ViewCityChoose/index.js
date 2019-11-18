@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import TemperatureInfos from '../TemperatureInfos';
 
-import { Wrapper, DescriptionText, TemperatureText, CityText } from './style';
+import { Wrapper, DescriptionText, TemperatureText, CityText } from './styles';
 
 const ViewCityChoose = ({
   description,
