@@ -3,7 +3,20 @@ import React from 'react';
 import Wrapper from './Wrapper';
 import ListCitiesItem from '../ListCitiesItem/index';
 
-import cities from '../../utils/cities.json';
+const cities = [
+  { name: 'Paris' },
+  { name: 'Berlin' },
+  { name: 'Los Angeles' },
+  { name: 'London' },
+  { name: 'New York' },
+  { name: 'Madrid' },
+  { name: 'São Paulo' },
+  { name: 'Tokyo' },
+  { name: 'Hong Kong' },
+  { name: 'Buenos Aires' },
+  { name: 'Moscow' },
+  { name: 'Dubai' }
+];
 
 const ListCities = () => (
   <Wrapper>
