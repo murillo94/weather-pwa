@@ -12,4 +12,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Wrapper;
+export { Wrapper };

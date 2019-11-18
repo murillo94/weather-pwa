@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Wrapper from './Wrapper';
-import ListCitiesItem from '../ListCitiesItem/index';
+import ListCitiesItem from '../ListCitiesItem';
+
+import { Wrapper } from './style';
 
 const cities = [
   { name: 'Paris' },

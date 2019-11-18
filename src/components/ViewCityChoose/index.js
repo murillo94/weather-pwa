@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './Wrapper';
-import DescriptionText from './DescriptionText';
-import TemperatureText from './TemperatureText';
-import CityText from './CityText';
-import TemperatureInfos from '../TemperatureInfos/index';
+import TemperatureInfos from '../TemperatureInfos';
+
+import { Wrapper, DescriptionText, TemperatureText, CityText } from './style';
 
 const ViewCityChoose = ({
   description,

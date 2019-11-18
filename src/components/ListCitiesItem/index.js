@@ -1,22 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { setConfig, cold } from 'react-hot-loader';
 import PropTypes from 'prop-types';
-
-import Wrapper from './Wrapper';
-import ContainerLocation from './ContainerLocation';
-import CityText from './CityText';
-import CountryText from './CountryText';
-import ContainerTemperature from './ContainerTemperature';
-import SectionTemperature from './SectionTemperature';
-import SectionTemperatureMobile from './SectionTemperatureMobile';
-import TemperatureText from './TemperatureText';
-import TemperatureImage from './TemperatureImage';
-import TemperatureInfos from '../TemperatureInfos/index';
-import Loading from '../Loading/index';
-import Error from '../Error/index';
-
-import request from '../../services/Api';
-
+import { setConfig, cold } from 'react-hot-loader';
 import {
   CloudLightning,
   CloudDrizzle,
@@ -25,6 +9,24 @@ import {
   Sun,
   Cloud
 } from 'react-feather';
+
+import request from '../../services/Api';
+
+import TemperatureInfos from '../TemperatureInfos';
+import Loading from '../Loading';
+import Error from '../Error';
+
+import {
+  Wrapper,
+  ContainerLocation,
+  CityText,
+  CountryText,
+  ContainerTemperature,
+  SectionTemperature,
+  SectionTemperatureMobile,
+  TemperatureText,
+  TemperatureImage
+} from './style';
 
 setConfig({
   onComponentRegister: type =>

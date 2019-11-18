@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import SectionTemperatureInfos from './SectionTemperatureInfos';
-import TemperatureImageInfos from './TemperatureImageInfos';
-import TemperatureTextInfos from './TemperatureTextInfos';
-
 import { TrendingDown, TrendingUp, Thermometer, Wind } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
+
+import {
+  SectionTemperatureInfos,
+  TemperatureTextInfos,
+  TemperatureImageInfos
+} from './style';
 
 const TemperatureInfos = ({
   sizeText,

@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Wrapper from './Wrapper';
-import Button from './Button';
-import Loading from './Loading';
-
 import { isMobile } from 'react-device-detect';
+
+import { Wrapper, Loading, Button } from './style';
 
 const ButtonOptions = ({ action, text, marginRight, loading, icon }) => {
   if (loading && text === 'My location') {

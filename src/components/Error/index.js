@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './Wrapper';
-import DescriptionText from './DescriptionText';
-import Button from './Button';
+import { Wrapper, DescriptionText, Button } from './style';
 
 const Error = ({ message, textBtn, type, back }) => {
   let typeError =

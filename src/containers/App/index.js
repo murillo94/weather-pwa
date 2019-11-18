@@ -2,9 +2,9 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import Container from '../../components/Container/index';
-import ViewCity from '../../components/ViewCity/index';
-import ListCities from '../../components/ListCities/index';
+import Container from '../../components/Container';
+import ViewCity from '../../components/ViewCity';
+import ListCities from '../../components/ListCities';
 
 const GlobalStyle = createGlobalStyle`
   html {

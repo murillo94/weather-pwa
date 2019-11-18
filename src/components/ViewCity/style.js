@@ -32,4 +32,4 @@ Wrapper.defaultProps = {
   backgroundImage: '#fff'
 };
 
-export default Wrapper;
+export { Wrapper };

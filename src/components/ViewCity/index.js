@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { setConfig, cold } from 'react-hot-loader';
 
-import Wrapper from './Wrapper';
-
-import ViewCityOptions from '../ViewCityOptions/index';
-import ViewCityChoose from '../ViewCityChoose/index';
-import Loading from '../Loading/index';
-import Error from '../Error/index';
-
 import request from '../../services/Api';
+
+import ViewCityOptions from '../ViewCityOptions';
+import ViewCityChoose from '../ViewCityChoose';
+import Loading from '../Loading';
+import Error from '../Error';
+
+import { Wrapper } from './style';
 
 setConfig({
   onComponentRegister: type =>

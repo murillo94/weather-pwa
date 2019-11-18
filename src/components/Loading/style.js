@@ -25,4 +25,11 @@ const Span = styled.span`
   }
 `;
 
-export default Span;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+`;
+
+export { Span, Wrapper };

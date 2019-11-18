@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { setConfig, cold } from 'react-hot-loader';
-
-import Wrapper from './Wrapper';
-import InputSearch from './InputSearch';
-import ButtonOptions from '../ButtonOptions/index';
-
 import { Search, RefreshCw, Navigation } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
+
+import ButtonOptions from '../ButtonOptions';
+
+import { Wrapper, InputSearch } from './style';
 
 setConfig({
   onComponentRegister: type =>

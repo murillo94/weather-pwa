@@ -1,5 +1,24 @@
 import styled from 'styled-components';
 
+const SectionTemperatureInfos = styled.div`
+  display: flex;
+  margin-top: 10px;
+  @media (max-width: 560px) {
+    display: block;
+  }
+`;
+
+const TemperatureImageInfos = styled.div`
+  margin-right: ${({ marginRight }) => marginRight}px;
+  @media (max-width: 560px) {
+    display: inline;
+  }
+`;
+
+TemperatureImageInfos.defaultProps = {
+  marginRight: 10
+};
+
 const TemperatureTextInfos = styled.div`
   font-size: ${({ sizeText }) => sizeText}px;
   color: ${({ colorText }) => colorText};
@@ -27,4 +46,4 @@ TemperatureTextInfos.defaultProps = {
   marginRight: 13
 };
 
-export default TemperatureTextInfos;
+export { SectionTemperatureInfos, TemperatureImageInfos, TemperatureTextInfos };

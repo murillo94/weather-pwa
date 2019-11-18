@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Wrapper from './Wrapper';
-import Span from './Span';
+import { Wrapper, Span } from './style';
 
 const Loading = () => (
   <Wrapper>
