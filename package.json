@@ -29,13 +29,13 @@
   },
   "dependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
+    "react": "^16.12.0",
     "react-device-detect": "^1.9.10",
-    "react-dom": "^16.11.0",
+    "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
-    "react-hot-loader": "^4.12.16",
+    "react-hot-loader": "^4.12.18",
     "react-tooltip": "^3.11.1",
-    "styled-components": "^4.1.2"
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --hot --open --mode development",
