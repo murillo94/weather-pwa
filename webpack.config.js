@@ -1,10 +1,63 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 
-let plugins = [
+const config = {
+  entry: ['react-hot-loader/patch', './src/index.js'],
+  output: {
+    path: path.resolve(__dirname, 'docs'),
+    filename: '[name].[contenthash].js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(jpe?g|png)$/i,
+        loader: 'image-webpack-loader',
+        enforce: 'pre'
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
+  },
+  devServer: {
+    contentBase: './docs'
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};
+
+const plugins = [
   new HtmlWebPackPlugin({
     template: './src/index.html',
     filename: './index.html',
@@ -87,7 +140,7 @@ module.exports = (env, argv) => {
       cacheId: 'weather-app',
       filename: 'service-worker.js',
       maximumFileSizeToCacheInBytes: 8388608,
-      staticFileGlobs: ['docs/*.{js,html,css,jpg,png}'],
+      staticFileGlobs: ['docs/*'],
       stripPrefix: 'docs/',
       directoryIndex: '/',
       verbose: true,
@@ -110,57 +163,12 @@ module.exports = (env, argv) => {
     plugins.push(cache);
   }
 
+  if (argv.hot) {
+    config.output.filename = '[name].[hash].js';
+  }
+
   return {
-    entry: './src/index.js',
-    output: {
-      path: path.resolve(__dirname, 'docs'),
-      filename: 'main.js'
-    },
-    module: {
-      rules: [
-        {
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader'
-          }
-        },
-        {
-          test: /\.(jpe?g|png|gif|svg)$/i,
-          loader: 'image-webpack-loader',
-          enforce: 'pre'
-        },
-        {
-          test: /\.html$/,
-          use: [
-            {
-              loader: 'html-loader',
-              options: { minimize: true }
-            }
-          ]
-        },
-        {
-          test: /\.json$/,
-          exclude: /node_modules/,
-          loader: 'json-loader'
-        }
-      ]
-    },
-    optimization: {
-      minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            ecma: 6,
-            compress: true,
-            output: {
-              comments: false,
-              beautify: false
-            }
-          }
-        })
-      ]
-    },
-    plugins: plugins
+    ...config,
+    plugins
   };
 };

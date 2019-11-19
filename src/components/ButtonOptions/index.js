@@ -1,28 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Wrapper from './Wrapper';
-import Button from './Button';
-import Loading from './Loading';
-
 import { isMobile } from 'react-device-detect';
 
-const ButtonOptions = ({ action, text, marginRight, loading, icon }) => {
-  if (loading && text === 'My location') {
+import { Wrapper, Loading, Button } from './styles';
+
+const ButtonOptions = ({ icon, text, marginRight, isLoading, onClick }) => {
+  if (isLoading && text === 'My location') {
     return (
       <Wrapper>
         <Loading />
       </Wrapper>
     );
   }
+
   return (
     <Wrapper>
       <Button
-        onClick={action}
+        isMobile={isMobile}
         aria-label={text}
         data-tip={text}
         marginRight={marginRight}
-        isMobile={isMobile}
+        onClick={onClick}
       >
         {icon}
       </Button>
@@ -31,11 +29,11 @@ const ButtonOptions = ({ action, text, marginRight, loading, icon }) => {
 };
 
 ButtonOptions.propTypes = {
-  action: PropTypes.func,
+  icon: PropTypes.element,
   text: PropTypes.string,
   marginRight: PropTypes.number,
-  loading: PropTypes.bool,
-  icon: PropTypes.element
+  isLoading: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 export default ButtonOptions;

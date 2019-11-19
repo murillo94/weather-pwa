@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-const InputSearch = styled.input.attrs(({ type, autoComplete }) => {
+const Wrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 20px;
+`;
+
+const Input = styled.input.attrs(({ type, autoComplete }) => {
   type: type;
   autoComplete: autoComplete;
 })`
@@ -17,12 +24,14 @@ const InputSearch = styled.input.attrs(({ type, autoComplete }) => {
   outline: 0;
   border: none;
   color: #333;
-  &::placeholder {
-    color: #fff;
-  }
+
   &:focus {
     width: 100px;
   }
+
+  &::placeholder {
+    color: #ffffff;
+  }
 `;
 
-export default InputSearch;
+export { Wrapper, Input };

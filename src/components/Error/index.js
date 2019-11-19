@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './Wrapper';
-import DescriptionText from './DescriptionText';
-import Button from './Button';
+import { Wrapper, Description, Button } from './styles';
 
-const Error = ({ message, textBtn, type, back }) => {
-  let typeError =
+const Error = ({ type, description, textButton, onClick }) => {
+  const typeError =
     type === 'view'
       ? {
           fontSize: 23,
@@ -18,26 +16,27 @@ const Error = ({ message, textBtn, type, back }) => {
           marginBottom: 10,
           padding: '5px 30px'
         };
+
   return (
     <Wrapper>
-      <DescriptionText
+      <Description
         marginBottom={typeError.marginBottom}
         fontSize={typeError.fontSize}
       >
-        {message}
-      </DescriptionText>
-      <Button padding={typeError.padding} onClick={back}>
-        {textBtn}
+        {description}
+      </Description>
+      <Button padding={typeError.padding} onClick={onClick}>
+        {textButton}
       </Button>
     </Wrapper>
   );
 };
 
 Error.propTypes = {
-  message: PropTypes.string,
-  textBtn: PropTypes.string,
   type: PropTypes.string,
-  back: PropTypes.func
+  description: PropTypes.string,
+  textButton: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default Error;

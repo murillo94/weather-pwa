@@ -1,22 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setConfig, cold } from 'react-hot-loader';
 import PropTypes from 'prop-types';
-
-import Wrapper from './Wrapper';
-import ContainerLocation from './ContainerLocation';
-import CityText from './CityText';
-import CountryText from './CountryText';
-import ContainerTemperature from './ContainerTemperature';
-import SectionTemperature from './SectionTemperature';
-import SectionTemperatureMobile from './SectionTemperatureMobile';
-import TemperatureText from './TemperatureText';
-import TemperatureImage from './TemperatureImage';
-import TemperatureInfos from '../TemperatureInfos/index';
-import Loading from '../Loading/index';
-import Error from '../Error/index';
-
-import request from '../../services/Api';
-
 import {
   CloudLightning,
   CloudDrizzle,
@@ -26,14 +9,39 @@ import {
   Cloud
 } from 'react-feather';
 
-setConfig({
-  onComponentRegister: type =>
-    (String(type).indexOf('useState') > 0 ||
-      String(type).indexOf('useEffect') > 0) &&
-    cold(type)
-});
+import request from '../../services/Api';
 
-function ListCitiesItem({ name }) {
+import TemperatureInfos from '../TemperatureInfos';
+import Loading from '../Loading';
+import Error from '../Error';
+
+import {
+  Wrapper,
+  ContainerLocation,
+  CityText,
+  CountryText,
+  ContainerTemperature,
+  SectionTemperature,
+  SectionTemperatureMobile,
+  TemperatureText,
+  TemperatureImage
+} from './styles';
+
+const getImageTemperature = icon => {
+  icon = icon.replace(/\D/g, '');
+
+  const options = {
+    '11': <CloudLightning color="#c1c1c1" size={30} />,
+    '09': <CloudDrizzle color="#c1c1c1" size={30} />,
+    '10': <CloudRain color="#c1c1c1" size={30} />,
+    '13': <CloudSnow color="#c1c1c1" size={30} />,
+    '01': <Sun color="#c1c1c1" size={30} />
+  };
+
+  return options[icon] || <Cloud color="#c1c1c1" size={30} />;
+};
+
+const ListCitiesItem = ({ name }) => {
   const [refresh, setRefresh] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -76,27 +84,13 @@ function ListCitiesItem({ name }) {
     setRefresh(!refresh);
   };
 
-  const getImageTemperature = icon => {
-    icon = icon.replace(/\D/g, '');
-
-    const options = {
-      '11': <CloudLightning color="#c1c1c1" size={30} />,
-      '09': <CloudDrizzle color="#c1c1c1" size={30} />,
-      '10': <CloudRain color="#c1c1c1" size={30} />,
-      '13': <CloudSnow color="#c1c1c1" size={30} />,
-      '01': <Sun color="#c1c1c1" size={30} />
-    };
-
-    return options[icon] || <Cloud color="#c1c1c1" size={30} />;
-  };
-
   if (error) {
     return (
       <Wrapper>
         <Error
-          message={error}
-          textBtn="Reload"
           type="list"
+          description={error}
+          textButton="Reload"
           back={actionRefresh}
         />
       </Wrapper>
@@ -124,20 +118,20 @@ function ListCitiesItem({ name }) {
         </SectionTemperature>
         <SectionTemperatureMobile>
           <TemperatureInfos
+            sizeText={13}
+            colorText="#7c7c7c"
+            sizeIcon={15}
+            colorIcon="#c1c1c1"
             tempMin={data.temp_min}
             tempMax={data.temp_max}
             humidity={data.humidity}
             wind={data.wind}
-            sizeIcon={15}
-            sizeText={13}
-            colorIcon="#c1c1c1"
-            colorText="#7c7c7c"
           />
         </SectionTemperatureMobile>
       </ContainerTemperature>
     </Wrapper>
   );
-}
+};
 
 ListCitiesItem.propTypes = {
   name: PropTypes.string

@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Wrapper from './Wrapper';
-import DescriptionText from './DescriptionText';
-import TemperatureText from './TemperatureText';
-import CityText from './CityText';
-import TemperatureInfos from '../TemperatureInfos/index';
+import TemperatureInfos from '../TemperatureInfos';
+
+import { Wrapper, Description, City, Temperature } from './styles';
 
 const ViewCityChoose = ({
   description,
@@ -17,26 +15,26 @@ const ViewCityChoose = ({
   wind
 }) => (
   <Wrapper>
-    <DescriptionText>{description}</DescriptionText>
-    <CityText>{name}</CityText>
-    <TemperatureText>{temp} °C</TemperatureText>
+    <Description>{description}</Description>
+    <City>{name}</City>
+    <Temperature>{temp} °C</Temperature>
     <TemperatureInfos
+      sizeText={15}
+      colorText="#ffffff"
+      sizeIcon={18}
+      colorIcon="#b7b7b7"
       tempMin={tempMin}
       tempMax={tempMax}
       humidity={humidity}
       wind={wind}
-      sizeIcon={18}
-      sizeText={15}
-      colorIcon="#b7b7b7"
-      colorText="#fff"
     />
   </Wrapper>
 );
 
 ViewCityChoose.propTypes = {
   description: PropTypes.string,
-  temp: PropTypes.number,
   name: PropTypes.string,
+  temp: PropTypes.number,
   tempMin: PropTypes.number,
   tempMax: PropTypes.number,
   humidity: PropTypes.number,

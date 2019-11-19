@@ -1,20 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { setConfig, cold } from 'react-hot-loader';
-
-import Wrapper from './Wrapper';
-import InputSearch from './InputSearch';
-import ButtonOptions from '../ButtonOptions/index';
 
 import { Search, RefreshCw, Navigation } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
 
-setConfig({
-  onComponentRegister: type =>
-    (String(type).indexOf('useState') > 0 ||
-      String(type).indexOf('useRef') > 0) &&
-    cold(type)
-});
+import ButtonOptions from '../ButtonOptions';
+
+import { Wrapper, Input } from './styles';
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -29,7 +21,7 @@ const useFormInput = initialValue => {
   };
 };
 
-function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
+const ViewCityOptions = ({ onUpdateSearch, onRefresh, onGeoLocation }) => {
   const search = useFormInput('');
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
@@ -40,15 +32,15 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
     }
   };
 
-  const actionSearch = () => {
+  const onClickSearch = () => {
     inputRef.current.focus();
   };
 
-  const actionRefresh = () => {
+  const onClickRefresh = () => {
     onRefresh();
   };
 
-  const actionGeoLocation = () => {
+  const onClickGeoLocation = () => {
     setLoading(true);
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -73,11 +65,11 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
   return (
     <Wrapper>
       <ButtonOptions
-        action={actionSearch}
-        text="Search"
         icon={<Search color="#ffffff" size={21} />}
+        text="Search"
+        onClick={onClickSearch}
       />
-      <InputSearch
+      <Input
         ref={inputRef}
         id="input"
         type="search"
@@ -88,16 +80,16 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
         {...search}
       />
       <ButtonOptions
-        action={actionRefresh}
-        text="Refresh"
         icon={<RefreshCw color="#ffffff" size={21} />}
+        text="Refresh"
+        onClick={onClickRefresh}
       />
       <ButtonOptions
-        action={actionGeoLocation}
-        text="My location"
-        marginRight={0}
-        loading={loading}
         icon={<Navigation color="#ffffff" size={21} />}
+        text="My location"
+        isLoading={loading}
+        marginRight={0}
+        onClick={onClickGeoLocation}
       />
       {!isMobile && (
         <ReactTooltip
@@ -108,6 +100,6 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
       )}
     </Wrapper>
   );
-}
+};
 
 export default ViewCityOptions;
