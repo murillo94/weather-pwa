@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   border-bottom-left-radius: 7px;
   border-right: 1px solid #eee;
   overflow-y: auto;
+
   @media (max-width: 991px) {
     flex: 0.6;
     border-top-left-radius: 7px;
@@ -22,6 +23,7 @@ const Wrapper = styled.div`
     border-bottom-left-radius: 0;
     border-bottom: 1px solid #eee;
   }
+
   @media (max-width: 560px) {
     border-radius: 0;
   }

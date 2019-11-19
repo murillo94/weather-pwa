@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import TemperatureInfos from '../TemperatureInfos';
 
-import { Wrapper, DescriptionText, TemperatureText, CityText } from './styles';
+import { Wrapper, Description, City, Temperature } from './styles';
 
 const ViewCityChoose = ({
   description,
@@ -15,9 +15,9 @@ const ViewCityChoose = ({
   wind
 }) => (
   <Wrapper>
-    <DescriptionText>{description}</DescriptionText>
-    <CityText>{name}</CityText>
-    <TemperatureText>{temp} °C</TemperatureText>
+    <Description>{description}</Description>
+    <City>{name}</City>
+    <Temperature>{temp} °C</Temperature>
     <TemperatureInfos
       tempMin={tempMin}
       tempMax={tempMax}

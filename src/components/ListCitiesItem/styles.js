@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 
-const CityText = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  max-width: 20vw;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5.5em;
+  padding: 0 1em;
+  border-top: 1px solid #eee;
+
+  &:first-child {
+    border-top: none;
+  }
+
   @media (max-width: 560px) {
-    max-width: 35vw;
+    height: 6.5em;
   }
 `;
 
@@ -16,8 +22,17 @@ const ContainerLocation = styled.div`
   display: block;
 `;
 
-const ContainerTemperature = styled.div`
-  display: block;
+const CityText = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  max-width: 20vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @media (max-width: 560px) {
+    max-width: 35vw;
+  }
 `;
 
 const CountryText = styled.div`
@@ -25,6 +40,10 @@ const CountryText = styled.div`
   font-size: 14px;
   font-weight: 400;
   margin-top: 3px;
+`;
+
+const ContainerTemperature = styled.div`
+  display: block;
 `;
 
 const SectionTemperature = styled.div`
@@ -39,11 +58,6 @@ const SectionTemperatureMobile = styled.div`
   }
 `;
 
-const TemperatureImage = styled.div`
-  margin-right: 10px;
-  display: inline-block;
-`;
-
 const TemperatureText = styled.div`
   font-size: 25px;
   font-weight: 600;
@@ -51,30 +65,19 @@ const TemperatureText = styled.div`
   margin-right: 20px;
 `;
 
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 5.5em;
-  padding: 0 1em;
-  border-top: 1px solid #eee;
-  &:first-child {
-    border-top: none;
-  }
-  @media (max-width: 560px) {
-    height: 6.5em;
-  }
+const TemperatureImage = styled.div`
+  margin-right: 10px;
+  display: inline-block;
 `;
 
 export {
-  CityText,
+  Wrapper,
   ContainerLocation,
-  ContainerTemperature,
+  CityText,
   CountryText,
+  ContainerTemperature,
   SectionTemperature,
   SectionTemperatureMobile,
-  TemperatureImage,
   TemperatureText,
-  Wrapper
+  TemperatureImage
 };

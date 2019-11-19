@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Wrapper, Span } from './styles';
+import { Wrapper, Loader } from './styles';
 
 const Loading = () => (
   <Wrapper>
-    <Span />
-    <Span />
+    <Loader />
+    <Loader />
   </Wrapper>
 );
 

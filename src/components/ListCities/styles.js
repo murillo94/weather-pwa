@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   flex: 0.6;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
   @media (max-width: 991px) {
     flex: 0.4;
   }

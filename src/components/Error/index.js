@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, DescriptionText, Button } from './styles';
+import { Wrapper, Description, Button } from './styles';
 
 const Error = ({ message, textBtn, type, back }) => {
   let typeError =
@@ -18,12 +18,12 @@ const Error = ({ message, textBtn, type, back }) => {
         };
   return (
     <Wrapper>
-      <DescriptionText
+      <Description
         marginBottom={typeError.marginBottom}
         fontSize={typeError.fontSize}
       >
         {message}
-      </DescriptionText>
+      </Description>
       <Button padding={typeError.padding} onClick={back}>
         {textBtn}
       </Button>

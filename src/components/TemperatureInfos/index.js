@@ -4,11 +4,7 @@ import { TrendingDown, TrendingUp, Thermometer, Wind } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
 
-import {
-  SectionTemperatureInfos,
-  TemperatureTextInfos,
-  TemperatureImageInfos
-} from './styles';
+import { Wrapper, Text, Image } from './styles';
 
 const TemperatureInfos = ({
   sizeText,
@@ -20,48 +16,48 @@ const TemperatureInfos = ({
   humidity,
   wind
 }) => (
-  <SectionTemperatureInfos>
-    <TemperatureTextInfos
+  <Wrapper>
+    <Text
       sizeText={sizeText}
       colorText={colorText}
       data-tip="Minimum temperature"
     >
-      <TemperatureImageInfos>
+      <Image>
         <TrendingDown color={colorIcon} size={sizeIcon} />
-      </TemperatureImageInfos>
+      </Image>
       {tempMin} °C
-    </TemperatureTextInfos>
-    <TemperatureTextInfos
+    </Text>
+    <Text
       sizeText={sizeText}
       colorText={colorText}
       data-tip="Maximum temperature"
     >
-      <TemperatureImageInfos>
+      <Image>
         <TrendingUp color={colorIcon} size={sizeIcon} />
-      </TemperatureImageInfos>
+      </Image>
       {tempMax} °C
-    </TemperatureTextInfos>
-    <TemperatureTextInfos
+    </Text>
+    <Text
       sizeText={sizeText}
       colorText={colorText}
       data-tip="Humidity"
     >
-      <TemperatureImageInfos marginRight={5}>
+      <Image marginRight={5}>
         <Thermometer color={colorIcon} size={sizeIcon} />
-      </TemperatureImageInfos>
+      </Image>
       {humidity}%
-    </TemperatureTextInfos>
-    <TemperatureTextInfos
+    </Text>
+    <Text
       sizeText={sizeText}
       colorText={colorText}
       data-tip="Wind"
       marginRight={0}
     >
-      <TemperatureImageInfos marginRight={8}>
+      <Image marginRight={8}>
         <Wind color={colorIcon} size={sizeIcon} />
-      </TemperatureImageInfos>
+      </Image>
       {wind}km/h
-    </TemperatureTextInfos>
+    </Text>
     {!isMobile && (
       <ReactTooltip
         className="tooltipCustom"
@@ -69,7 +65,7 @@ const TemperatureInfos = ({
         globalEventOff="click"
       />
     )}
-  </SectionTemperatureInfos>
+  </Wrapper>
 );
 
 TemperatureInfos.propTypes = {

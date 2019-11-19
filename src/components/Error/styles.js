@@ -8,18 +8,19 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const DescriptionText = styled.p`
+const Description = styled.p`
   font-size: ${({ fontSize }) => fontSize}px;
   font-weight: bold;
   margin: 0 0 ${({ marginBottom }) => marginBottom}px;
   text-align: center;
   padding: 0 40px;
+
   &:first-letter {
     text-transform: capitalize;
   }
 `;
 
-DescriptionText.defaultProps = {
+Description.defaultProps = {
   fontSize: 23,
   marginBottom: 25
 };
@@ -35,6 +36,7 @@ const Button = styled.button`
   outline: 0;
   box-shadow: none;
   transition: 0.2s ease-in all;
+
   &:hover {
     background-color: #b2b2b2;
   }
@@ -44,4 +46,4 @@ Button.defaultProps = {
   padding: '10px 30px'
 };
 
-export { Wrapper, Button, DescriptionText };
+export { Wrapper, Button, Description };

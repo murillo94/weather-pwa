@@ -12,6 +12,7 @@ const Loading = styled.div`
   height: 15px;
   margin: 2px 8px 0 10px;
   animation: spin 0.5s linear infinite;
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -32,6 +33,7 @@ const Button = styled.button`
   transition: 0.2s ease-in all;
   border-radius: 99px;
   cursor: pointer;
+
   ${({ isMobile }) =>
     !isMobile &&
     `

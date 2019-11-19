@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 
 import ButtonOptions from '../ButtonOptions';
 
-import { Wrapper, InputSearch } from './styles';
+import { Wrapper, Input } from './styles';
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -69,7 +69,7 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
         text="Search"
         icon={<Search color="#ffffff" size={21} />}
       />
-      <InputSearch
+      <Input
         ref={inputRef}
         id="input"
         type="search"

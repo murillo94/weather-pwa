@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   padding: 0 20px;
 `;
 
-const InputSearch = styled.input.attrs(({ type, autoComplete }) => {
+const Input = styled.input.attrs(({ type, autoComplete }) => {
   type: type;
   autoComplete: autoComplete;
 })`
@@ -24,12 +24,14 @@ const InputSearch = styled.input.attrs(({ type, autoComplete }) => {
   outline: 0;
   border: none;
   color: #333;
-  &::placeholder {
-    color: #fff;
-  }
+
   &:focus {
     width: 100px;
   }
+
+  &::placeholder {
+    color: #fff;
+  }
 `;
 
-export { Wrapper, InputSearch };
+export { Wrapper, Input };
