@@ -28,14 +28,14 @@ Description.defaultProps = {
 const Button = styled.button`
   color: #ffffff;
   font-size: 15px;
-  border-radius: 99px;
-  padding: ${({ padding }) => padding};
   background-color: #cacacd;
+  border-radius: 99px;
   border: none;
-  cursor: pointer;
-  outline: 0;
   box-shadow: none;
-  transition: 0.2s ease-in all;
+  padding: ${({ padding }) => padding};
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  will-change: auto;
 
   &:hover {
     background-color: #b2b2b2;

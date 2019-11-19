@@ -26,13 +26,13 @@ const Loading = styled.div`
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  box-shadow: none;
-  outline: 0;
-  margin-right: ${({ marginRight }) => marginRight}px;
-  padding: 3px 9px;
-  transition: 0.2s ease-in all;
   border-radius: 99px;
+  box-shadow: none;
+  padding: 3px 9px;
+  margin-right: ${({ marginRight }) => marginRight}px;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+  will-change: auto;
 
   ${({ isMobile }) =>
     !isMobile &&
