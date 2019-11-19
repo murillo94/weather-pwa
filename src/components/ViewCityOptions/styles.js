@@ -30,7 +30,7 @@ const Input = styled.input.attrs(({ type, autoComplete }) => {
   }
 
   &::placeholder {
-    color: #fff;
+    color: #ffffff;
   }
 `;
 

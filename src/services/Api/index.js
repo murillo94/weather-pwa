@@ -9,17 +9,18 @@ const defaultContent = {
   lang: 'en'
 };
 
-function queryString(obj) {
-  return Object.entries(obj)
+const queryString = obj =>
+  Object.entries(obj)
     .map(([index, val]) => `${index}=${val}`)
     .join('&');
-}
 
-export default async function request(url, content = {}) {
+const request = async (url, content = {}) => {
   const obj = { ...defaultContent, ...content };
 
   const response = await fetch(`${api}/${url}?${queryString(obj)}`);
   const data = await response;
 
   return data;
-}
+};
+
+export default request;

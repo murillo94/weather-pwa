@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 const Loading = styled.div`
   border: 3px solid transparent;
   border-radius: 50%;
-  border-top: 3px solid #fff;
+  border-top: 3px solid #ffffff;
   width: 15px;
   height: 15px;
   margin: 2px 8px 0 10px;

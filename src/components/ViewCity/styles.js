@@ -30,8 +30,8 @@ const Wrapper = styled.div`
 `;
 
 Wrapper.defaultProps = {
-  backgroundColor: '#fff',
-  backgroundImage: '#fff'
+  backgroundColor: '#ffffff',
+  backgroundImage: '#ffffff'
 };
 
 export { Wrapper };

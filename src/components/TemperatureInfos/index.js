@@ -9,8 +9,8 @@ import { Wrapper, Text, Image } from './styles';
 const TemperatureInfos = ({
   sizeText,
   colorText,
-  colorIcon,
   sizeIcon,
+  colorIcon,
   tempMin,
   tempMax,
   humidity,
@@ -37,11 +37,7 @@ const TemperatureInfos = ({
       </Image>
       {tempMax} °C
     </Text>
-    <Text
-      sizeText={sizeText}
-      colorText={colorText}
-      data-tip="Humidity"
-    >
+    <Text sizeText={sizeText} colorText={colorText} data-tip="Humidity">
       <Image marginRight={5}>
         <Thermometer color={colorIcon} size={sizeIcon} />
       </Image>
@@ -69,14 +65,14 @@ const TemperatureInfos = ({
 );
 
 TemperatureInfos.propTypes = {
+  sizeText: PropTypes.number,
+  colorText: PropTypes.string,
+  sizeIcon: PropTypes.number,
+  colorIcon: PropTypes.string,
   tempMin: PropTypes.number,
   tempMax: PropTypes.number,
   humidity: PropTypes.number,
-  wind: PropTypes.number,
-  sizeIcon: PropTypes.number,
-  sizeText: PropTypes.number,
-  colorIcon: PropTypes.string,
-  colorText: PropTypes.string
+  wind: PropTypes.number
 };
 
 export default TemperatureInfos;

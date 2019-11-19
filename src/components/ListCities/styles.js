@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background-color: #fff;
+  background-color: #ffffff;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
   flex: 0.6;

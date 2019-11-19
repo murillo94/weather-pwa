@@ -21,7 +21,7 @@ const useFormInput = initialValue => {
   };
 };
 
-function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
+const ViewCityOptions = ({ onUpdateSearch, onRefresh, onGeoLocation }) => {
   const search = useFormInput('');
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
@@ -32,15 +32,15 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
     }
   };
 
-  const actionSearch = () => {
+  const onClickSearch = () => {
     inputRef.current.focus();
   };
 
-  const actionRefresh = () => {
+  const onClickRefresh = () => {
     onRefresh();
   };
 
-  const actionGeoLocation = () => {
+  const onClickGeoLocation = () => {
     setLoading(true);
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -65,9 +65,9 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
   return (
     <Wrapper>
       <ButtonOptions
-        action={actionSearch}
-        text="Search"
         icon={<Search color="#ffffff" size={21} />}
+        text="Search"
+        onClick={onClickSearch}
       />
       <Input
         ref={inputRef}
@@ -80,16 +80,16 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
         {...search}
       />
       <ButtonOptions
-        action={actionRefresh}
-        text="Refresh"
         icon={<RefreshCw color="#ffffff" size={21} />}
+        text="Refresh"
+        onClick={onClickRefresh}
       />
       <ButtonOptions
-        action={actionGeoLocation}
-        text="My location"
-        marginRight={0}
-        loading={loading}
         icon={<Navigation color="#ffffff" size={21} />}
+        text="My location"
+        isLoading={loading}
+        marginRight={0}
+        onClick={onClickGeoLocation}
       />
       {!isMobile && (
         <ReactTooltip
@@ -100,6 +100,6 @@ function ViewCityOptions({ onUpdateSearch, onRefresh, onGeoLocation }) {
       )}
     </Wrapper>
   );
-}
+};
 
 export default ViewCityOptions;

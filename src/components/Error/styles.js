@@ -26,7 +26,7 @@ Description.defaultProps = {
 };
 
 const Button = styled.button`
-  color: #fff;
+  color: #ffffff;
   font-size: 15px;
   border-radius: 99px;
   padding: ${({ padding }) => padding};

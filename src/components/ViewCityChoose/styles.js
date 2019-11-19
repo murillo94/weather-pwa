@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Description = styled.div`
-  color: #fff;
+  color: #ffffff;
   font-size: 23px;
   font-weight: bold;
   margin: 0 0 15px;
@@ -26,14 +26,14 @@ const Description = styled.div`
 `;
 
 const City = styled.div`
-  color: #fff;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 500;
   margin: 0 0 20px;
 `;
 
 const Temperature = styled.div`
-  color: #fff;
+  color: #ffffff;
   font-size: 55px;
   font-weight: bold;
   margin-bottom: 10px;

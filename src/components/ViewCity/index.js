@@ -9,7 +9,21 @@ import Error from '../Error';
 
 import { Wrapper } from './styles';
 
-function ViewCity() {
+const getColorTemperature = icon => {
+  icon = icon.replace(/\D/g, '');
+
+  const options = {
+    '11': { color: '#738294', image: '#889eb3' },
+    '09': { color: '#879aaf', image: '#99b5d0' },
+    '10': { color: '#698eb3', image: '#9dbbdc' },
+    '13': { color: '#b0cbed', image: '#def1ff' },
+    '01': { color: '#ffde65', image: '#f9e362' }
+  };
+
+  return options[icon] || { color: '#b9d6f5', image: '#a7d5fb' };
+};
+
+const ViewCity = () => {
   const [search, setSearch] = useState('Joinville');
   const [searchBkp, setSearchBkp] = useState('Joinville');
   const [refresh, setRefresh] = useState(false);
@@ -57,16 +71,20 @@ function ViewCity() {
     })();
   }, [search, refresh]);
 
-  const onUpdateSearch = search => {
+  const onChangeSearch = search => {
     setSearch(search);
   };
 
-  const onRefresh = () => {
+  const onClickRefresh = () => {
     setSearch(searchBkp);
     setRefresh(!refresh);
   };
 
-  const onGeoLocation = ({ latitude = '', longitude = '', error = null }) => {
+  const onClickGeoLocation = ({
+    latitude = '',
+    longitude = '',
+    error = null
+  }) => {
     if (error) {
       setError(error);
     } else {
@@ -74,28 +92,19 @@ function ViewCity() {
     }
   };
 
-  const actionBack = () => {
+  const onClickBack = () => {
     setError(null);
-  };
-
-  const getColorTemperature = icon => {
-    icon = icon.replace(/\D/g, '');
-
-    const options = {
-      '11': { color: '#738294', image: '#889eb3' },
-      '09': { color: '#879aaf', image: '#99b5d0' },
-      '10': { color: '#698eb3', image: '#9dbbdc' },
-      '13': { color: '#b0cbed', image: '#def1ff' },
-      '01': { color: '#ffde65', image: '#f9e362' }
-    };
-
-    return options[icon] || { color: '#b9d6f5', image: '#a7d5fb' };
   };
 
   if (error) {
     return (
       <Wrapper>
-        <Error message={error} textBtn="Back" type="view" back={actionBack} />
+        <Error
+          type="view"
+          description={error}
+          textButton="Back"
+          onClick={onClickBack}
+        />
       </Wrapper>
     );
   }
@@ -114,14 +123,14 @@ function ViewCity() {
       backgroundImage={data.background.image}
     >
       <ViewCityOptions
-        onUpdateSearch={onUpdateSearch}
-        onRefresh={onRefresh}
-        onGeoLocation={onGeoLocation}
+        onUpdateSearch={onChangeSearch}
+        onRefresh={onClickRefresh}
+        onGeoLocation={onClickGeoLocation}
       />
       <ViewCityChoose
         description={data.description}
-        temp={data.temp}
         name={data.name}
+        temp={data.temp}
         tempMin={data.temp_min}
         tempMax={data.temp_max}
         humidity={data.humidity}
@@ -129,6 +138,6 @@ function ViewCity() {
       />
     </Wrapper>
   );
-}
+};
 
 export default ViewCity;
