@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { setConfig, cold } from 'react-hot-loader';
 import {
   CloudLightning,
   CloudDrizzle,
@@ -27,13 +26,6 @@ import {
   TemperatureText,
   TemperatureImage
 } from './styles';
-
-setConfig({
-  onComponentRegister: type =>
-    (String(type).indexOf('useState') > 0 ||
-      String(type).indexOf('useEffect') > 0) &&
-    cold(type)
-});
 
 function ListCitiesItem({ name }) {
   const [refresh, setRefresh] = useState(false);

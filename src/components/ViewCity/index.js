@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { setConfig, cold } from 'react-hot-loader';
 
 import request from '../../services/Api';
 
@@ -9,13 +8,6 @@ import Loading from '../Loading';
 import Error from '../Error';
 
 import { Wrapper } from './styles';
-
-setConfig({
-  onComponentRegister: type =>
-    (String(type).indexOf('useState') > 0 ||
-      String(type).indexOf('useEffect') > 0) &&
-    cold(type)
-});
 
 function ViewCity() {
   const [search, setSearch] = useState('Joinville');

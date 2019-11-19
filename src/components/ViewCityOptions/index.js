@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { setConfig, cold } from 'react-hot-loader';
+
 import { Search, RefreshCw, Navigation } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
@@ -7,13 +7,6 @@ import ReactTooltip from 'react-tooltip';
 import ButtonOptions from '../ButtonOptions';
 
 import { Wrapper, InputSearch } from './styles';
-
-setConfig({
-  onComponentRegister: type =>
-    (String(type).indexOf('useState') > 0 ||
-      String(type).indexOf('useRef') > 0) &&
-    cold(type)
-});
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
