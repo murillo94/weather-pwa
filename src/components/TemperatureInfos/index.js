@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { TrendingDown, TrendingUp, Thermometer, Wind } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
@@ -63,16 +62,5 @@ const TemperatureInfos = ({
     )}
   </Wrapper>
 );
-
-TemperatureInfos.propTypes = {
-  sizeText: PropTypes.number,
-  colorText: PropTypes.string,
-  sizeIcon: PropTypes.number,
-  colorIcon: PropTypes.string,
-  tempMin: PropTypes.number,
-  tempMax: PropTypes.number,
-  humidity: PropTypes.number,
-  wind: PropTypes.number
-};
 
 export default TemperatureInfos;

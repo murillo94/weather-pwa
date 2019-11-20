@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import {
   CloudLightning,
   CloudDrizzle,
@@ -131,10 +130,6 @@ const ListCitiesItem = ({ name }) => {
       </ContainerTemperature>
     </Wrapper>
   );
-};
-
-ListCitiesItem.propTypes = {
-  name: PropTypes.string
 };
 
 export default ListCitiesItem;

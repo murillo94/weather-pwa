@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import TemperatureInfos from '../TemperatureInfos';
 
@@ -30,15 +29,5 @@ const ViewCityChoose = ({
     />
   </Wrapper>
 );
-
-ViewCityChoose.propTypes = {
-  description: PropTypes.string,
-  name: PropTypes.string,
-  temp: PropTypes.number,
-  tempMin: PropTypes.number,
-  tempMax: PropTypes.number,
-  humidity: PropTypes.number,
-  wind: PropTypes.number
-};
 
 export default ViewCityChoose;

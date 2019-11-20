@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 
 import { Wrapper, Loading, Button } from './styles';
@@ -20,14 +19,6 @@ const ButtonOptions = ({ icon, text, marginRight, isLoading, onClick }) => (
       </Button>
     )}
   </Wrapper>
-)
-
-ButtonOptions.propTypes = {
-  icon: PropTypes.element,
-  text: PropTypes.string,
-  marginRight: PropTypes.number,
-  isLoading: PropTypes.bool,
-  onClick: PropTypes.func
-};
+);
 
 export default ButtonOptions;

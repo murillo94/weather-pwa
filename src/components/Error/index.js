@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Wrapper, Description, Button } from './styles';
 
@@ -30,13 +29,6 @@ const Error = ({ type, description, textButton, onClick }) => {
       </Button>
     </Wrapper>
   );
-};
-
-Error.propTypes = {
-  type: PropTypes.string,
-  description: PropTypes.string,
-  textButton: PropTypes.string,
-  onClick: PropTypes.func
 };
 
 export default Error;
