@@ -43,9 +43,10 @@ const ViewCityOptions = ({ onUpdateSearch, onRefresh, onGeoLocation }) => {
     setLoading(true);
     navigator.geolocation.getCurrentPosition(
       position => {
+        const { latitude, longitude } = position.coords
         onGeoLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          latitude,
+          longitude
         });
         setLoading(false);
       },
