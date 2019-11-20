@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-
 import { Search, RefreshCw, Navigation } from 'react-feather';
 import { isMobile } from 'react-device-detect';
 import ReactTooltip from 'react-tooltip';
